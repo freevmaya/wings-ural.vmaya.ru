@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 /** @var yii\web\View $this */
@@ -9,6 +8,8 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 
 $this->render('_head');
+
+$cssVersion = 1;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ $this->render('_head');
     <?php $this->head() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/site.css?v=<?= $cssVersion ?>">
 </head>
 <body class="fullscreen-mode">
 <?php $this->beginBody() ?>
