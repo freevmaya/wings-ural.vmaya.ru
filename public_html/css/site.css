@@ -489,6 +489,7 @@ body.fullscreen-mode {
     padding: 2rem;
     z-index: 2;
     animation: fadeInUp 1s ease;
+    margin-top: 80px;
 }
 
 .hero-text h1 {
@@ -615,19 +616,19 @@ body.fullscreen-mode {
         justify-content: center;
     }
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .hero-text h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     .hero-text p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .content-block h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     .content-block p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
 
