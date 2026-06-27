@@ -1,0 +1,4268 @@
+# COMBINED PROJECT FILES FOR DEEPSEEK
+# Encoding: UTF-8
+# Processed extensions: .php, .html, .css, .json, .js
+
+# ============================================================
+# FILE: .\web\css\site.css
+# TYPE: .CSS
+# ============================================================
+
+main > .container {
+    padding: 70px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.not-set {
+    color: var(--bs-danger);
+    font-style: italic;
+}
+
+a {
+    color: yellow;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    content: '';
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 2px 4px;
+    background: transparent;
+}
+
+a.asc:after {
+    border-bottom: solid 7px var(--bs-body-color);
+    border-top-width: 0;
+}
+
+a.desc:after {
+    border-top: solid 7px var(--bs-body-color);
+    border-bottom-width: 0;
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: var(--bs-secondary-color);
+}
+
+.error-summary {
+    color: var(--bs-danger-text-emphasis);
+    background: var(--bs-danger-bg-subtle);
+    border-left: 3px solid var(--bs-danger-border-subtle);
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align navbar brand baseline with nav links */
+.navbar > .container,
+.navbar > .container-fluid {
+    align-items: baseline;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    color: var(--bs-navbar-color);
+}
+
+@media (max-width: 767.98px) {
+    .navbar-nav .nav-link.logout {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+.navbar-nav .nav-link.logout:focus,
+.navbar-nav .nav-link.logout:hover {
+    color: var(--bs-navbar-hover-color);
+}
+
+/* footer logo: light logo by default (light bg-body-tertiary), dark logo for dark theme */
+.footer-logo-dark { display: none; }
+
+[data-bs-theme="dark"] .footer-logo-light { display: none; }
+[data-bs-theme="dark"] .footer-logo-dark  { display: inline-block; }
+
+/* login inputs: seamless icon inside input (Volt style) */
+.login-split-card .input-group {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    overflow: hidden;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.login-split-card .input-group .input-group-text {
+    background: transparent;
+    border: 0;
+    padding-left: 1rem;
+    padding-right: .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-split-card .input-group .form-control {
+    border: 0;
+    background: transparent;
+}
+
+.login-split-card .input-group .form-control:focus {
+    box-shadow: none;
+}
+
+.login-split-card .input-group:focus-within {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+}
+
+/* validation styles for login split card (browsers with :has()) */
+@supports selector(.input-group:has(.is-invalid)) {
+    .login-split-card .input-group:has(.is-invalid) ~ .invalid-feedback {
+        display: block;
+        margin-top: .35rem;
+        margin-bottom: .5rem;
+    }
+
+    .login-split-card .input-group:has(.is-invalid) {
+        border-color: var(--bs-danger);
+    }
+
+    .login-split-card .input-group:has(.is-invalid):focus-within {
+        box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
+    }
+}
+
+/* fallback validation styles for login split card (browsers without :has()) */
+@supports not selector(.input-group:has(.is-invalid)) {
+    .login-split-card .invalid-feedback:not(:empty) {
+        display: block;
+        margin-top: .35rem;
+        margin-bottom: .5rem;
+    }
+
+    .login-split-card .input-group .form-control.is-invalid {
+        border: var(--bs-border-width) solid var(--bs-danger);
+    }
+
+    .login-split-card .input-group .form-control.is-invalid:focus {
+        box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25);
+    }
+}
+
+/* login split card */
+.login-split-card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .10);
+    background-color: var(--bs-gray-100);
+    width: 100%;
+    max-width: 900px;
+}
+
+.login-split-card-wide {
+    max-width: 960px;
+}
+
+.login-brand-title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+.login-brand-text {
+    font-size: .9rem;
+}
+
+.login-brand-panel {
+    background: linear-gradient(135deg, #40B3D8 0%, #3a9cbd 40%, #83C933 100%);
+    position: relative;
+    min-height: 480px;
+}
+
+.login-brand-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(241, 138, 42, .25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(131, 201, 51, .2) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #40B3D8, #3a9cbd);
+    border: none;
+    font-weight: 600;
+    letter-spacing: .02em;
+    transition: opacity .2s, transform .1s;
+}
+
+.login-btn:hover {
+    opacity: .9;
+    transform: translateY(-1px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* dark mode login card */
+[data-bs-theme="dark"] .login-split-card {
+    background-color: var(--bs-body-bg);
+    box-shadow: 0 0 0 1px var(--bs-border-color), 0 4px 24px rgba(0, 0, 0, .4);
+}
+
+[data-bs-theme="dark"] .login-mobile-logo {
+    filter: invert(1);
+}
+
+/* contact form textarea height */
+.site-contact textarea.form-control {
+    height: 140px;
+}
+
+/* captcha: blend with card background */
+.site-contact img[src*="captcha"] {
+    border-radius: var(--bs-border-radius);
+    mix-blend-mode: multiply;
+}
+
+/* dark mode: invert captcha for visibility on dark background */
+[data-bs-theme="dark"] .site-contact img[src*="captcha"] {
+    mix-blend-mode: screen;
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* centered page layout */
+.site-login,
+.site-contact,
+.site-index,
+.site-error,
+.site-about,
+.site-contact-success {
+    flex: 1;
+}
+
+.site-error .site-error-content,
+.site-about .site-about-content,
+.site-contact-success .site-contact-success-content {
+    width: 100%;
+    max-width: 90%;
+}
+
+@media (min-width: 576px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 992px) {
+    .site-error .site-error-content,
+    .site-about .site-about-content,
+    .site-contact-success .site-contact-success-content {
+        max-width: 50%;
+    }
+}
+
+/* hero banner */
+.hero-banner {
+    /*background: linear-gradient(135deg, #83C933 0%, #3a9cbd 40%, #40B3D8 100%);*/
+    position: relative;
+}
+
+.hero-lead {
+    max-width: 520px;
+}
+
+.hero-logo {
+    height: 120px;
+    opacity: .45;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /*
+    background:
+        radial-gradient(circle at 15% 85%, rgba(241, 138, 42, .3) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(131, 201, 51, .25) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(64, 179, 216, .15) 0%, transparent 60%);*/
+    pointer-events: none;
+}
+
+/* extension cards */
+.extension-card {
+    transition: transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.extension-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .12) !important;
+}
+
+.extension-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* dark mode: extension cards */
+[data-bs-theme="dark"] .extension-card {
+    background-color: var(--bs-body-bg);
+    box-shadow: 0 0 0 1px var(--bs-border-color), 0 2px 8px rgba(0, 0, 0, .3);
+}
+
+[data-bs-theme="dark"] .extension-card:hover {
+    box-shadow: 0 0 0 1px var(--bs-border-color), 0 8px 24px rgba(0, 0, 0, .4) !important;
+}
+
+
+
+# ============================================================
+# FILE: .\web\js\color-mode.js
+# TYPE: .JS
+# ============================================================
+
+/*!
+ * Color mode toggler for Bootstrap 5.3+
+ * Based on https://getbootstrap.com/docs/5.3/customize/color-modes/
+ */
+(() => {
+    'use strict'
+
+    const getStoredTheme = () => localStorage.getItem('theme')
+    const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+    const getPreferredTheme = () => {
+        const stored = getStoredTheme()
+        if (stored) return stored
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = theme => {
+        document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+
+    const updateToggle = theme => {
+        const toggle = document.getElementById('theme-toggle')
+        if (!toggle) return
+        toggle.textContent = theme === 'dark' ? '\u2600' : '\uD83C\uDF19'
+        toggle.setAttribute(
+            'aria-label',
+            theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+        )
+    }
+
+    setTheme(getPreferredTheme())
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (!getStoredTheme()) {
+            const theme = getPreferredTheme()
+            setTheme(theme)
+            updateToggle(theme)
+        }
+    })
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateToggle(getPreferredTheme())
+
+        const toggle = document.getElementById('theme-toggle')
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const newTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark'
+                    ? 'light'
+                    : 'dark'
+                setStoredTheme(newTheme)
+                setTheme(newTheme)
+                updateToggle(newTheme)
+            })
+        }
+    })
+})()
+
+
+
+# ============================================================
+# FILE: .\composer.json
+# TYPE: .JSON
+# ============================================================
+
+{
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Basic Project Template",
+    "keywords": ["yii2", "framework", "basic", "project template"],
+    "homepage": "https://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "https://www.yiiframework.com/forum/",
+        "wiki": "https://www.yiiframework.com/wiki/",
+        "irc": "ircs://irc.libera.chat:6697/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.2",
+        "yiisoft/yii2": "~2.0.54",
+        "yiisoft/yii2-bootstrap5": "~2.0.2",
+        "yiisoft/yii2-symfonymailer": "~2.0.3"
+    },
+    "require-dev": {
+        "codeception/c3": "^2.8",
+        "codeception/codeception": "^5.0.0",
+        "codeception/lib-innerbrowser": "^4.0",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-filesystem": "^3.0",
+        "codeception/module-phpbrowser": "^3.0",
+        "codeception/module-yii2": "^1.1",
+        "codeception/verify": "^3.0",
+        "phpstan/phpstan": "^2.1",
+        "symfony/process": "^6.3",
+        "yiisoft/yii2-coding-standards": "^3.0",
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "codeception/c3": true
+        },
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "scripts": {
+        "cs": "./vendor/bin/phpcs",
+        "cs-fix": "./vendor/bin/phpcbf",
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "static": "./vendor/bin/phpstan --memory-limit=-1",
+        "tests": "./vendor/bin/codecept run --env php-builtin"
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
+
+
+
+# ============================================================
+# FILE: .\c3.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+// phpcs:ignoreFile
+// @codeCoverageIgnoreStart
+
+/**
+ * C3 - Codeception Code Coverage
+ *
+ * @author tiger
+ */
+
+// $_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_DEBUG'] = 1;
+
+use SebastianBergmann\CodeCoverage\CodeCoverage;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
+use SebastianBergmann\CodeCoverage\Driver\Selector;
+use SebastianBergmann\CodeCoverage\Filter as CodeCoverageFilter;
+
+if (isset($_COOKIE['CODECEPTION_CODECOVERAGE'])) {
+    $cookie = json_decode($_COOKIE['CODECEPTION_CODECOVERAGE'], true);
+
+    // fix for improperly encoded JSON in Code Coverage cookie with WebDriver.
+    // @see https://github.com/Codeception/Codeception/issues/874
+    if (!is_array($cookie)) {
+        $cookie = json_decode($cookie, true);
+    }
+
+    if ($cookie) {
+        foreach ($cookie as $key => $value) {
+            if (!empty($value)) {
+                $_SERVER["HTTP_X_CODECEPTION_" . strtoupper($key)] = $value;
+            }
+        }
+    }
+}
+
+if (!array_key_exists('HTTP_X_CODECEPTION_CODECOVERAGE', $_SERVER)) {
+    return;
+}
+
+if (!function_exists('__c3_error')) {
+    function __c3_error($message)
+    {
+        $errorLogFile = defined('C3_CODECOVERAGE_ERROR_LOG_FILE') ?
+            C3_CODECOVERAGE_ERROR_LOG_FILE :
+            C3_CODECOVERAGE_MEDIATE_STORAGE . DIRECTORY_SEPARATOR . 'error.txt';
+        if (is_writable($errorLogFile)) {
+            file_put_contents($errorLogFile, $message);
+        } else {
+            $message = "Could not write error to log file ($errorLogFile), original message: $message";
+        }
+        if (!headers_sent()) {
+            header('X-Codeception-CodeCoverage-Error: ' . str_replace("\n", ' ', $message), true, 500);
+            setcookie('CODECEPTION_CODECOVERAGE_ERROR', $message);
+        }
+    }
+}
+
+// Autoload Codeception classes
+if (!class_exists('\\Codeception\\Codecept') || !function_exists('codecept_is_path_absolute')) {
+    if (file_exists(__DIR__ . '/codecept.phar')) {
+        require_once 'phar://' . __DIR__ . '/codecept.phar/autoload.php';
+    } elseif (stream_resolve_include_path(__DIR__ . '/vendor/autoload.php')) {
+        require_once __DIR__ . '/vendor/autoload.php';
+        // Required to load some methods only available at codeception/autoload.php
+        if (stream_resolve_include_path(__DIR__ . '/vendor/codeception/codeception/autoload.php')) {
+            require_once __DIR__ . '/vendor/codeception/codeception/autoload.php';
+        }
+    } elseif (stream_resolve_include_path('Codeception/autoload.php')) {
+        require_once 'Codeception/autoload.php';
+    } else {
+        __c3_error('Codeception is not loaded. Please check that either PHAR or Composer package can be used');
+    }
+}
+
+// phpunit codecoverage shimming
+if (!class_exists('PHP_CodeCoverage') and class_exists('SebastianBergmann\CodeCoverage\CodeCoverage')) {
+    class_alias('SebastianBergmann\CodeCoverage\CodeCoverage', 'PHP_CodeCoverage');
+    class_alias('SebastianBergmann\CodeCoverage\Report\Text', 'PHP_CodeCoverage_Report_Text');
+    class_alias('SebastianBergmann\CodeCoverage\Report\PHP', 'PHP_CodeCoverage_Report_PHP');
+    class_alias('SebastianBergmann\CodeCoverage\Report\Clover', 'PHP_CodeCoverage_Report_Clover');
+    class_alias('SebastianBergmann\CodeCoverage\Report\Crap4j', 'PHP_CodeCoverage_Report_Crap4j');
+    class_alias('SebastianBergmann\CodeCoverage\Report\Html\Facade', 'PHP_CodeCoverage_Report_HTML');
+    class_alias('SebastianBergmann\CodeCoverage\Report\Xml\Facade', 'PHP_CodeCoverage_Report_XML');
+    class_alias('SebastianBergmann\CodeCoverage\Exception', 'PHP_CodeCoverage_Exception');
+}
+// phpunit version
+if (!class_exists('PHPUnit_Runner_Version') && class_exists('PHPUnit\Runner\Version')) {
+    class_alias('PHPUnit\Runner\Version', 'PHPUnit_Runner_Version');
+}
+
+// Load Codeception Config
+$configDistFile = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'codeception.dist.yml';
+$configFile = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'codeception.yml';
+
+if (isset($_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_CONFIG'])) {
+    $configFile = realpath(__DIR__) . DIRECTORY_SEPARATOR . $_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_CONFIG'];
+}
+if (file_exists($configFile)) {
+    // Use codeception.yml for configuration.
+} elseif (file_exists($configDistFile)) {
+    // Use codeception.dist.yml for configuration.
+    $configFile = $configDistFile;
+} else {
+    __c3_error(sprintf("Codeception config file '%s' not found", $configFile));
+}
+try {
+    \Codeception\Configuration::config($configFile);
+} catch (\Exception $e) {
+    __c3_error($e->getMessage());
+}
+
+if (!defined('C3_CODECOVERAGE_MEDIATE_STORAGE')) {
+
+    // workaround for 'zend_mm_heap corrupted' problem
+    gc_disable();
+
+    $memoryLimit = ini_get('memory_limit');
+    $requiredMemory = '384M';
+    if ((substr($memoryLimit, -1) === 'M' && (int)$memoryLimit < (int)$requiredMemory)
+        || (substr($memoryLimit, -1) === 'K' && (int)$memoryLimit < (int)$requiredMemory * 1024)
+        || (ctype_digit($memoryLimit) && (int)$memoryLimit < (int)$requiredMemory * 1024 * 1024)
+    ) {
+        ini_set('memory_limit', $requiredMemory);
+    }
+
+    define('C3_CODECOVERAGE_MEDIATE_STORAGE', Codeception\Configuration::outputDir() . 'c3tmp');
+    define('C3_CODECOVERAGE_PROJECT_ROOT', Codeception\Configuration::projectDir());
+    define('C3_CODECOVERAGE_TESTNAME', $_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE']);
+
+    function __c3_build_html_report(PHP_CodeCoverage $codeCoverage, $path)
+    {
+        $writer = new PHP_CodeCoverage_Report_HTML();
+        $writer->process($codeCoverage, $path . 'html');
+
+        if (file_exists($path . '.tar')) {
+            unlink($path . '.tar');
+        }
+
+        $phar = new PharData($path . '.tar');
+        $phar->setSignatureAlgorithm(Phar::SHA1);
+        $files = $phar->buildFromDirectory($path . 'html');
+        array_map('unlink', $files);
+
+        if (in_array('GZ', Phar::getSupportedCompression())) {
+            if (file_exists($path . '.tar.gz')) {
+                unlink($path . '.tar.gz');
+            }
+
+            $phar->compress(\Phar::GZ);
+
+            // close the file so that we can rename it
+            unset($phar);
+
+            unlink($path . '.tar');
+            rename($path . '.tar.gz', $path . '.tar');
+        }
+
+        return $path . '.tar';
+    }
+
+    function __c3_build_clover_report(PHP_CodeCoverage $codeCoverage, $path)
+    {
+        $writer = new PHP_CodeCoverage_Report_Clover();
+        $writer->process($codeCoverage, $path . '.clover.xml');
+
+        return $path . '.clover.xml';
+    }
+
+    function __c3_build_crap4j_report(PHP_CodeCoverage $codeCoverage, $path)
+    {
+        $writer = new PHP_CodeCoverage_Report_Crap4j();
+        $writer->process($codeCoverage, $path . '.crap4j.xml');
+
+        return $path . '.crap4j.xml';
+    }
+
+    function __c3_build_cobertura_report(PHP_CodeCoverage $codeCoverage, $path)
+    {
+        if (!class_exists(\SebastianBergmann\CodeCoverage\Report\Cobertura::class)) {
+            throw new Exception("Cobertura report requires php-code-coverage >= 9.2");
+        }
+        $writer = new \SebastianBergmann\CodeCoverage\Report\Cobertura();
+        $writer->process($codeCoverage, $path . '.cobertura.xml');
+
+        return $path . '.cobertura.xml';
+    }
+
+    function __c3_build_phpunit_report(PHP_CodeCoverage $codeCoverage, $path)
+    {
+        $writer = new PHP_CodeCoverage_Report_XML(\PHPUnit_Runner_Version::id());
+        $writer->process($codeCoverage, $path . 'phpunit');
+
+        if (file_exists($path . '.tar')) {
+            unlink($path . '.tar');
+        }
+
+        $phar = new PharData($path . '.tar');
+        $phar->setSignatureAlgorithm(Phar::SHA1);
+        $files = $phar->buildFromDirectory($path . 'phpunit');
+        array_map('unlink', $files);
+
+        if (in_array('GZ', Phar::getSupportedCompression())) {
+            if (file_exists($path . '.tar.gz')) {
+                unlink($path . '.tar.gz');
+            }
+
+            $phar->compress(\Phar::GZ);
+
+            // close the file so that we can rename it
+            unset($phar);
+
+            unlink($path . '.tar');
+            rename($path . '.tar.gz', $path . '.tar');
+        }
+
+        return $path . '.tar';
+    }
+
+    function __c3_send_file($filename)
+    {
+        if (!headers_sent()) {
+            readfile($filename);
+        }
+
+        return __c3_exit();
+    }
+
+     /**
+     * Keep track of the number of running tests
+     * @param bool $decrease default false. Whether to increase or decrease the counter
+     */
+    function __c3_testcounter($decrease = false)
+    {
+        $blockfilename = realpath(C3_CODECOVERAGE_MEDIATE_STORAGE) . DIRECTORY_SEPARATOR . 'block_report';
+        $file = fopen($blockfilename, 'c+');
+        if (flock($file, LOCK_EX)){
+            // 24 bytes is enough to hold largest integer supported in 64 bit systems
+            $testcounter = intval(fread($file, 24)) + ($decrease ? -1 : 1);
+            ftruncate($file, 0);
+            rewind($file);
+            fwrite($file, $testcounter);
+        } else {
+            __c3_error("Failed to acquire write-lock for $blockfilename");
+        }
+        fclose($file);
+    }
+
+    /**
+     * @param $filename
+     * @param bool $lock Lock the file for writing?
+     * @return [null|PHP_CodeCoverage|\SebastianBergmann\CodeCoverage\CodeCoverage, resource]
+     */
+    function __c3_factory($filename, $lock = false)
+    {
+        $file = null;
+        if ($filename !== null && is_readable($filename)) {
+            if ($lock) {
+                $file = fopen($filename, 'r+');
+                if (flock($file, LOCK_EX)) {
+                    $phpCoverage = unserialize(stream_get_contents($file));
+                } else {
+                    __c3_error("Failed to acquire write-lock for $filename");
+                }
+            } else {
+                // wait until serialized coverage data of all tests is written to file
+                $blockfilename = realpath(C3_CODECOVERAGE_MEDIATE_STORAGE) . DIRECTORY_SEPARATOR . 'block_report';
+                if (file_exists($blockfilename) && filesize($blockfilename) !== 0) {
+                    while(file_get_contents($blockfilename) !== '0') {
+                        usleep(250000); // 0.25 sec
+                    }
+                }
+                $phpCoverage = unserialize(file_get_contents($filename));
+            }
+
+            return [$phpCoverage, $file];
+        }
+
+        if (isset($_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_SUITE'])) {
+            $suite = $_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_SUITE'];
+            try {
+                $settings = \Codeception\Configuration::suiteSettings($suite, \Codeception\Configuration::config());
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+                $settings = [];
+            }
+        } else {
+            $settings = \Codeception\Configuration::config();
+        }
+
+        $pathCoverage = false;
+        if (isset($settings['coverage']['path_coverage'])) {
+            $pathCoverage = (bool)$settings['coverage']['path_coverage'];
+        }
+
+        if (class_exists(Selector::class)) {
+            //php-code-coverage >= 9.1.10
+            $filter = new CodeCoverageFilter();
+            if ($pathCoverage) {
+                $driver = (new Selector())->forLineAndPathCoverage($filter);
+            } else {
+                $driver = (new Selector())->forLineCoverage($filter);
+            }
+            $phpCoverage = new CodeCoverage($driver, $filter);
+        } elseif (method_exists(Driver::class, 'forLineCoverage')) {
+            //php-code-coverage 9.0.0 - 9.1.9
+            $filter = new CodeCoverageFilter();
+            if ($pathCoverage) {
+                $driver = Driver::forLineAndPathCoverage($filter);
+            } else {
+                $driver = Driver::forLineCoverage($filter);
+            }
+            $phpCoverage = new CodeCoverage($driver, $filter);
+        } else {
+            //php-code-coverage 8 or older
+            $phpCoverage = new PHP_CodeCoverage();
+        }
+
+        try {
+            \Codeception\Coverage\Filter::setup($phpCoverage)
+                ->whiteList($settings)
+                ->blackList($settings);
+        } catch (Exception $e) {
+            __c3_error($e->getMessage());
+        }
+
+        return [$phpCoverage, $file];
+    }
+
+    function __c3_exit()
+    {
+        if (!isset($_SERVER['HTTP_X_CODECEPTION_CODECOVERAGE_DEBUG'])) {
+            exit;
+        }
+        return null;
+    }
+
+    function __c3_clear()
+    {
+        \Codeception\Util\FileSystem::doEmptyDir(C3_CODECOVERAGE_MEDIATE_STORAGE);
+    }
+}
+
+if (!is_dir(C3_CODECOVERAGE_MEDIATE_STORAGE)) {
+    if (mkdir(C3_CODECOVERAGE_MEDIATE_STORAGE, 0777, true) === false) {
+        __c3_error('Failed to create directory "' . C3_CODECOVERAGE_MEDIATE_STORAGE . '"');
+    }
+}
+
+// evaluate base path for c3-related files
+$path = realpath(C3_CODECOVERAGE_MEDIATE_STORAGE) . DIRECTORY_SEPARATOR . 'codecoverage';
+
+$requestedC3Report = (strpos($_SERVER['REQUEST_URI'], 'c3/report') !== false);
+
+$completeReport = $currentReport = $path . '.serialized';
+if ($requestedC3Report) {
+    set_time_limit(0);
+
+    $route = ltrim(strrchr(rtrim($_SERVER['REQUEST_URI'], '/'), '/'), '/');
+
+    if ($route === 'clear') {
+        __c3_clear();
+        return __c3_exit();
+    }
+
+    list($codeCoverage, ) = __c3_factory($completeReport);
+
+    switch ($route) {
+        case 'html':
+            try {
+                __c3_send_file(__c3_build_html_report($codeCoverage, $path));
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+        case 'clover':
+            try {
+                __c3_send_file(__c3_build_clover_report($codeCoverage, $path));
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+        case 'crap4j':
+            try {
+                __c3_send_file(__c3_build_crap4j_report($codeCoverage, $path));
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+        case 'serialized':
+            try {
+                __c3_send_file($completeReport);
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+        case 'phpunit':
+            try {
+                __c3_send_file(__c3_build_phpunit_report($codeCoverage, $path));
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+        case 'cobertura':
+            try {
+                __c3_send_file(__c3_build_cobertura_report($codeCoverage, $path));
+            } catch (Exception $e) {
+                __c3_error($e->getMessage());
+            }
+            return __c3_exit();
+    }
+} else {
+    list($codeCoverage, ) = __c3_factory(null);
+    __c3_testcounter();
+    $codeCoverage->start(C3_CODECOVERAGE_TESTNAME);
+    if (!array_key_exists('HTTP_X_CODECEPTION_CODECOVERAGE_DEBUG', $_SERVER)) {
+        register_shutdown_function(
+            function () use ($codeCoverage, $currentReport) {
+                $codeCoverage->stop();
+                if (!file_exists(dirname($currentReport))) { // verify directory exists
+                    if (!mkdir(dirname($currentReport), 0777, true)) {
+                        __c3_error("Can't write CodeCoverage report into $currentReport");
+                    }
+                }
+
+                // This will either lock the existing report for writing and return it along with a file pointer,
+                // or return a fresh PHP_CodeCoverage object without a file pointer. We'll merge the current request
+                // into that coverage object, write it to disk, and release the lock. By doing this in the end of
+                // the request, we avoid this scenario, where Request 2 overwrites the changes from Request 1:
+                //
+                //             Time ->
+                // Request 1 [ <read>               <write>          ]
+                // Request 2 [         <read>                <write> ]
+                //
+                // In addition, by locking the file for exclusive writing, we make sure no other request try to
+                // read/write to the file at the same time as this request (leading to a corrupt file). flock() is a
+                // blocking call, so it waits until an exclusive lock can be acquired before continuing.
+
+                list($existingCodeCoverage, $file) = __c3_factory($currentReport, true);
+                $existingCodeCoverage->merge($codeCoverage);
+
+                if ($file === null) {
+                    file_put_contents($currentReport, serialize($existingCodeCoverage), LOCK_EX);
+                } else {
+                    fseek($file, 0);
+                    fwrite($file, serialize($existingCodeCoverage));
+                    fflush($file);
+                    flock($file, LOCK_UN);
+                    fclose($file);
+                }
+                __c3_testcounter(true);
+            }
+        );
+    }
+}
+
+// @codeCoverageIgnoreEnd
+
+
+
+# ============================================================
+# FILE: .\commands\HelloController.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/**
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
+declare(strict_types=1);
+
+namespace app\commands;
+
+use yii\console\Controller;
+use yii\console\ExitCode;
+
+/**
+ * This command echoes the first argument that you have entered.
+ *
+ * This command is provided as an example for you to learn how to create console commands.
+ *
+ * @author Qiang Xue <qiang.xue@gmail.com>
+ * @since 2.0
+ */
+class HelloController extends Controller
+{
+    /**
+     * This command echoes what you have entered as the message.
+     * @param string $message the message to be echoed.
+     * @return int Exit code
+     */
+    public function actionIndex(string $message = 'hello world'): int
+    {
+        echo "{$message}\n";
+
+        return ExitCode::OK;
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\config\__autocomplete.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/**
+ * This class only exists here for IDE (PHPStorm/Netbeans/...) autocompletion.
+ * This file is never included anywhere.
+ * Adjust this file to match classes configured in your application config, to enable IDE autocompletion for custom components.
+ * Example: A property phpdoc can be added in `__Application` class as `@property \vendor\package\Rollbar|__Rollbar $rollbar` and adding a class in this file
+ * ```php
+ * // @property of \vendor\package\Rollbar goes here
+ * class __Rollbar {
+ * }
+ * ```
+ */
+class Yii
+{
+    /**
+     * @var \yii\web\Application|\yii\console\Application|__Application
+     */
+    public static $app;
+}
+
+/**
+ * @property yii\rbac\DbManager $authManager
+ * @property \yii\web\User|__WebUser $user
+ */
+class __Application
+{
+}
+
+/**
+ * @property app\models\User $identity
+ */
+class __WebUser
+{
+}
+
+
+
+# ============================================================
+# FILE: .\config\console.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+$params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/db.php';
+
+$config = [
+    'id' => 'basic-console',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'controllerNamespace' => 'app\commands',
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+        '@tests' => '@app/tests',
+    ],
+    'components' => [
+        'cache' => [
+            'class' => \yii\caching\FileCache::class,
+        ],
+        'log' => [
+            'targets' => [
+                [
+                    'class' => \yii\log\FileTarget::class,
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'db' => $db,
+    ],
+    'params' => $params,
+    /*
+    'controllerMap' => [
+        'fixture' => [ // Fixture generation command line.
+            'class' => 'yii\faker\FixtureController',
+        ],
+    ],
+    */
+];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => \yii\gii\Module::class,
+    ];
+    // configuration adjustments for 'dev' environment
+    // requires version `2.1.21` of yii2-debug module
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => \yii\debug\Module::class,
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+}
+
+return $config;
+
+
+
+# ============================================================
+# FILE: .\config\db.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+return [
+    'class' => \yii\db\Connection::class,
+    'dsn' => 'mysql:host=localhost;dbname=wings-ural',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8',
+
+    // Schema cache options (for production environment)
+    //'enableSchemaCache' => true,
+    //'schemaCacheDuration' => 60,
+    //'schemaCache' => 'cache',
+];
+
+
+
+# ============================================================
+# FILE: .\config\params.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+return [
+    'adminEmail' => 'admin@example.com',
+    'senderEmail' => 'noreply@example.com',
+    'senderName' => 'Example.com mailer',
+];
+
+
+
+# ============================================================
+# FILE: .\config\test.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+$params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/test_db.php';
+
+/**
+ * Application configuration shared by all test types
+ */
+return [
+    'id' => 'basic-tests',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => [
+        \app\tests\Support\MailerBootstrap::class,
+    ],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    'language' => 'en-US',
+    'components' => [
+        'db' => $db,
+        'mailer' => [
+            'class' => \yii\symfonymailer\Mailer::class,
+            'messageClass' => \yii\symfonymailer\Message::class,
+            'useFileTransport' => true,
+            'viewPath' => '@app/mail',
+        ],
+        'assetManager' => [
+            'basePath' => __DIR__ . '/../web/assets',
+        ],
+        'urlManager' => [
+            'showScriptName' => true,
+        ],
+        'user' => [
+            'identityClass' => \app\models\User::class,
+        ],
+        'request' => [
+            'cookieValidationKey' => 'test',
+            'enableCsrfValidation' => false,
+            // but if you absolutely need it set cookie domain to localhost
+            /*
+            'csrfCookie' => [
+                'domain' => 'localhost',
+            ],
+            */
+        ],
+    ],
+    'params' => $params,
+];
+
+
+
+# ============================================================
+# FILE: .\config\test_db.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+$db = require __DIR__ . '/db.php';
+// test database! Important not to run tests on production or development databases
+$db['dsn'] = 'mysql:host=localhost;dbname=yii2basic_test';
+
+return $db;
+
+
+
+# ============================================================
+# FILE: .\config\web.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+$params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/db.php';
+
+$config = [
+    'id' => 'basic',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'container' => [
+        'singletons' => [
+            \yii\mail\MailerInterface::class => [
+                'class' => \yii\symfonymailer\Mailer::class,
+                // send all mails to a file by default.
+                'useFileTransport' => true,
+                'viewPath' => '@app/mail',
+            ],
+        ],
+    ],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    'components' => [
+        'request' => [
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'rU7letnsI0alzXKwkZ8tmamNAU8ecfTC',
+        ],
+        'cache' => [
+            'class' => \yii\caching\FileCache::class,
+        ],
+        'user' => [
+            'identityClass' => \app\models\User::class,
+            'enableAutoLogin' => true,
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'mailer' => \yii\mail\MailerInterface::class,
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => \yii\log\FileTarget::class,
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'db' => $db,
+        /*
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
+        */
+    ],
+    'params' => $params,
+];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => \yii\debug\Module::class,
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => \yii\gii\Module::class,
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+}
+
+return $config;
+
+
+
+# ============================================================
+# FILE: .\controllers\FlightController.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+namespace app\controllers;
+
+use yii\web\Controller;
+
+class FlightController extends Controller
+{
+    public function actionVyezdy()
+    {
+        $this->layout = 'main';
+        return $this->render('vyezdy');
+    }
+    
+    public function actionPlany()
+    {
+        $this->layout = 'main';
+        return $this->render('plany');
+    }
+}
+
+
+# ============================================================
+# FILE: .\controllers\SiteController.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\controllers;
+
+use Yii;
+use app\models\ContactForm;
+use app\models\LoginForm;
+use yii\captcha\CaptchaAction;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\base\Security;
+use yii\mail\MailerInterface;
+use yii\web\Controller;
+use yii\web\ErrorAction;
+use yii\web\Response;
+
+class SiteController extends Controller
+{
+    public function __construct(
+        $id,
+        $module,
+        private readonly MailerInterface $mailer,
+        private readonly Security $security,
+        $config = [],
+    ) {
+        parent::__construct($id, $module, $config);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors(): array
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function actions(): array
+    {
+        return [
+            'error' => [
+                'class' => ErrorAction::class,
+            ],
+            'captcha' => [
+                'class' => CaptchaAction::class,
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'transparent' => true,
+            ],
+        ];
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionIndex(): string
+    {
+        return $this->render('index');
+    }
+
+    /**
+     * Login action.
+     *
+     * @return Response|string
+     */
+    public function actionLogin(): Response|string
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm($this->security);
+
+        if ($model->load($this->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        $model->password = '';
+
+        return $this->render('login', ['model' => $model]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout(): Response
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    /**
+     * Displays contact page.
+     *
+     * @return Response|string
+     */
+    public function actionContact(): Response|string
+    {
+        $model = new ContactForm();
+
+        $contact = $model->load($this->request->post()) && $model->contact(
+            $this->mailer,
+            Yii::$app->params['adminEmail'],
+            Yii::$app->params['senderEmail'],
+            Yii::$app->params['senderName'],
+        );
+
+        if ($contact) {
+            Yii::$app->session->setFlash(
+                'success',
+                'Thank you for contacting us. We will respond to you as soon as possible.',
+            );
+
+            return $this->refresh();
+        }
+
+        return $this->render('contact', ['model' => $model]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionAbout(): string
+    {
+        return $this->render('about');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\mail\layouts\html.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+use yii\helpers\Html;
+
+/** @var \yii\web\View $this view component instance */
+/** @var \yii\mail\MessageInterface $message the message being composed */
+/** @var string $content main view render result */
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>" />
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+</head>
+<body>
+    <?php $this->beginBody() ?>
+    <?= $content ?>
+    <?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
+
+
+
+# ============================================================
+# FILE: .\mail\layouts\text.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/**
+ * @var yii\web\View $this view component instance
+ * @var yii\mail\BaseMessage $message the message being composed
+ * @var string $content main view render result
+ */
+
+$this->beginPage();
+$this->beginBody();
+echo $content;
+$this->endBody();
+$this->endPage();
+
+
+
+# ============================================================
+# FILE: .\models\ContactForm.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\models;
+
+use yii\base\Model;
+use yii\mail\MailerInterface;
+
+/**
+ * ContactForm is the model behind the contact form.
+ */
+class ContactForm extends Model
+{
+    public string $name = '';
+    public string $email = '';
+    public string $subject = '';
+    public string $body = '';
+    public string $verifyCode = '';
+    /**
+     * @return array the validation rules.
+     */
+    public function rules(): array
+    {
+        return [
+            // name, email, subject and body are required
+            [['name', 'email', 'subject', 'body'], 'required'],
+            // email has to be a valid email address
+            ['email', 'email'],
+            // verifyCode needs to be entered correctly
+            ['verifyCode', 'captcha'],
+        ];
+    }
+
+    /**
+     * @return array customized attribute labels
+     */
+    public function attributeLabels(): array
+    {
+        return [
+            'verifyCode' => 'Verification Code',
+        ];
+    }
+
+    /**
+     * Sends an email to the specified email address using the information collected by this model.
+     *
+     * @param MailerInterface $mailer the mailer component.
+     * @param string $email the target email address.
+     * @param string $senderEmail the sender email address.
+     * @param string $senderName the sender name.
+     *
+     * @return bool whether the model passes validation.
+     */
+    public function contact(MailerInterface $mailer, string $email, string $senderEmail, string $senderName): bool
+    {
+        if ($this->validate()) {
+            $mailer->compose()
+                ->setTo($email)
+                ->setFrom([$senderEmail => $senderName])
+                ->setReplyTo([$this->email => $this->name])
+                ->setSubject($this->subject)
+                ->setTextBody($this->body)
+                ->send();
+
+            return true;
+        }
+
+        return false;
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\models\LoginForm.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\models;
+
+use Yii;
+use yii\base\Model;
+use yii\base\Security;
+
+/**
+ * LoginForm is the model behind the login form.
+ *
+ * @property-read User|null $user
+ *
+class LoginForm extends Model
+{
+    public string $username = '';
+    public string $password = '';
+    public bool $rememberMe = true;
+    private User|null $_user = null;
+    private bool $_userLoaded = false;
+    public function __construct(private readonly Security $security, $config = [])
+    {
+        parent::__construct($config);
+    }
+
+    /**
+     * @return array the validation rules.
+     */
+    public function rules(): array
+    {
+        return [
+            // username and password are both required
+            [['username', 'password'], 'required'],
+            // rememberMe must be a boolean value
+            ['rememberMe', 'boolean'],
+            // password is validated by validatePassword()
+            ['password', 'validatePassword'],
+        ];
+    }
+
+    /**
+     * Validates the password.
+     * This method serves as the inline validation for password.
+     *
+     * @param string $attribute the attribute currently being validated
+     * @param array $params the additional name-value pairs given in the rule
+     */
+    public function validatePassword(string $attribute, array|null $params): void
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+
+            if (!$user || !$this->security->validatePassword($this->password, $user->passwordHash)) {
+                $this->addError($attribute, 'Incorrect username or password.');
+            }
+        }
+    }
+
+    /**
+     * Logs in a user using the provided username and password.
+     * @return bool whether the user is logged in successfully
+     */
+    public function login(): bool
+    {
+        if ($this->validate()) {
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        }
+
+        return false;
+    }
+
+    /**
+     * Finds user by [[username]]
+     *
+     * @return User|null
+     */
+    public function getUser(): User|null
+    {
+        if (!$this->_userLoaded) {
+            $this->_user = User::findByUsername($this->username);
+            $this->_userLoaded = true;
+        }
+
+        return $this->_user;
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\models\User.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\models;
+
+use yii\base\BaseObject;
+use yii\web\IdentityInterface;
+
+class User extends BaseObject implements IdentityInterface
+{
+    public int|string $id = '';
+    public string $username = '';
+    public string $passwordHash = '';
+    public string $authKey = '';
+    public string $accessToken = '';
+    private static array $_users = [
+        '100' => [
+            'id' => '100',
+            'username' => 'admin',
+            // password: admin
+            'passwordHash' => '$2y$13$gYAywKSkhfZDq9FLNdm7buKnvlRxDexf5xipSMAxQPDUxpaptmZJu',
+            'authKey' => 'test100key',
+            'accessToken' => '100-token',
+        ],
+        '101' => [
+            'id' => '101',
+            'username' => 'demo',
+            // password: demo
+            'passwordHash' => '$2y$13$alRLq1PGVMlGYwS/Y3iy3ewQns1Z8ol8Iq6Zb5k7ZwEhblA1aL29y',
+            'authKey' => 'test101key',
+            'accessToken' => '101-token',
+        ],
+    ];
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentity($id): static|null
+    {
+        return isset(self::$_users[$id]) ? new static(self::$_users[$id]) : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentityByAccessToken($token, $type = null): static|null
+    {
+        foreach (self::$_users as $user) {
+            if ($user['accessToken'] === $token) {
+                return new static($user);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername(string $username): static|null
+    {
+        foreach (self::$_users as $user) {
+            if (strcasecmp($user['username'], $username) === 0) {
+                return new static($user);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): int|string
+    {
+        return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAuthKey(): string|null
+    {
+        return $this->authKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey): bool
+    {
+        return $this->authKey === $authKey;
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\requirements.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/**
+ * Application requirement checker script.
+ *
+ * In order to run this script use the following console command:
+ * php requirements.php
+ *
+ * In order to run this script from the web, you should copy it to the web root.
+ * If you are using Linux you can create a hard link instead, using the following command:
+ * ln ../requirements.php requirements.php
+ */
+
+// you may need to adjust this path to the correct Yii framework path
+// uncomment and adjust the following line if Yii is not located at the default path
+//$frameworkPath = dirname(__FILE__) . '/vendor/yiisoft/yii2';
+
+
+if (!isset($frameworkPath)) {
+    $searchPaths = array(
+        dirname(__FILE__) . '/vendor/yiisoft/yii2',
+        dirname(__FILE__) . '/../vendor/yiisoft/yii2',
+    );
+    foreach ($searchPaths as $path) {
+        if (is_dir($path)) {
+            $frameworkPath = $path;
+            break;
+        }
+    }
+}
+
+if (!isset($frameworkPath) || !is_dir($frameworkPath)) {
+    $message = "<h1>Error</h1>\n\n"
+        . "<p><strong>The path to yii framework seems to be incorrect.</strong></p>\n"
+        . '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . "</abbr>.</p>\n"
+        . '<p>Please refer to the <abbr title="' . dirname(__FILE__) . "/README.md\">README</abbr> on how to install Yii.</p>\n";
+
+    if (!empty($_SERVER['argv'])) {
+        // do not print HTML when used in console mode
+        echo strip_tags($message);
+    } else {
+        echo $message;
+    }
+    exit(1);
+}
+
+require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
+$requirementsChecker = new YiiRequirementChecker();
+
+$gdMemo = $imagickMemo = 'Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required for image CAPTCHA.';
+$gdOK = $imagickOK = false;
+
+if (extension_loaded('imagick')) {
+    $imagick = new Imagick();
+    $imagickFormats = $imagick->queryFormats('PNG');
+    if (in_array('PNG', $imagickFormats)) {
+        $imagickOK = true;
+    } else {
+        $imagickMemo = 'Imagick extension should be installed with PNG support in order to be used for image CAPTCHA.';
+    }
+}
+
+if (extension_loaded('gd')) {
+    $gdInfo = gd_info();
+    if (!empty($gdInfo['FreeType Support'])) {
+        $gdOK = true;
+    } else {
+        $gdMemo = 'GD extension should be installed with FreeType support in order to be used for image CAPTCHA.';
+    }
+}
+
+/**
+ * Adjust requirements according to your application specifics.
+ */
+$requirements = array(
+    // Database :
+    array(
+        'name' => 'PDO extension',
+        'mandatory' => true,
+        'condition' => extension_loaded('pdo'),
+        'by' => 'All DB-related classes',
+    ),
+    array(
+        'name' => 'PDO SQLite extension',
+        'mandatory' => false,
+        'condition' => extension_loaded('pdo_sqlite'),
+        'by' => 'All DB-related classes',
+        'memo' => 'Required for SQLite database.',
+    ),
+    array(
+        'name' => 'PDO MySQL extension',
+        'mandatory' => false,
+        'condition' => extension_loaded('pdo_mysql'),
+        'by' => 'All DB-related classes',
+        'memo' => 'Required for MySQL database.',
+    ),
+    array(
+        'name' => 'PDO PostgreSQL extension',
+        'mandatory' => false,
+        'condition' => extension_loaded('pdo_pgsql'),
+        'by' => 'All DB-related classes',
+        'memo' => 'Required for PostgreSQL database.',
+    ),
+    // Cache :
+    array(
+        'name' => 'Memcache extension',
+        'mandatory' => false,
+        'condition' => extension_loaded('memcache') || extension_loaded('memcached'),
+        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-caching-memcache.html">MemCache</a>',
+        'memo' => extension_loaded('memcached') ? 'To use memcached set <a href="https://www.yiiframework.com/doc-2.0/yii-caching-memcache.html#$useMemcached-detail">MemCache::useMemcached</a> to <code>true</code>.' : ''
+    ),
+    // CAPTCHA:
+    array(
+        'name' => 'GD PHP extension with FreeType support',
+        'mandatory' => false,
+        'condition' => $gdOK,
+        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-captcha-captcha.html">Captcha</a>',
+        'memo' => $gdMemo,
+    ),
+    array(
+        'name' => 'ImageMagick PHP extension with PNG support',
+        'mandatory' => false,
+        'condition' => $imagickOK,
+        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-captcha-captcha.html">Captcha</a>',
+        'memo' => $imagickMemo,
+    ),
+    // PHP ini :
+    'phpExposePhp' => array(
+        'name' => 'Expose PHP',
+        'mandatory' => false,
+        'condition' => $requirementsChecker->checkPhpIniOff("expose_php"),
+        'by' => 'Security reasons',
+        'memo' => '"expose_php" should be disabled at php.ini',
+    ),
+    'phpAllowUrlInclude' => array(
+        'name' => 'PHP allow url include',
+        'mandatory' => false,
+        'condition' => $requirementsChecker->checkPhpIniOff("allow_url_include"),
+        'by' => 'Security reasons',
+        'memo' => '"allow_url_include" should be disabled at php.ini',
+    ),
+    'phpSmtp' => array(
+        'name' => 'PHP mail SMTP',
+        'mandatory' => false,
+        'condition' => strlen(ini_get('SMTP')) > 0,
+        'by' => 'Email sending',
+        'memo' => 'PHP mail SMTP server required',
+    ),
+);
+
+// OPcache check
+if (!version_compare(phpversion(), '5.5', '>=')) {
+    $requirements[] = array(
+        'name' => 'APC extension',
+        'mandatory' => false,
+        'condition' => extension_loaded('apc'),
+        'by' => '<a href="https://www.yiiframework.com/doc-2.0/yii-caching-apccache.html">ApcCache</a>',
+    );
+}
+
+$result = $requirementsChecker->checkYii()->check($requirements)->getResult();
+$requirementsChecker->render();
+exit($result['summary']['errors'] === 0 ? 0 : 1);
+
+
+
+# ============================================================
+# FILE: .\tests\Acceptance\AboutCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
+use yii\helpers\Url;
+
+final class AboutCest
+{
+    public function ensureThatAboutWorks(AcceptanceTester $I): void
+    {
+        $I->amOnPage(Url::toRoute('/site/about'));
+        $I->see('About', 'h1');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Acceptance\ContactCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
+use yii\helpers\Url;
+
+final class ContactCest
+{
+    public function _before(AcceptanceTester $I)
+    {
+        $I->amOnPage(Url::toRoute('/site/contact'));
+    }
+
+    public function contactPageWorks(AcceptanceTester $I)
+    {
+        $I->wantTo('ensure that contact page works');
+        $I->see('Contact', 'h1');
+    }
+
+    public function contactFormCanBeSubmitted(AcceptanceTester $I)
+    {
+        $I->amGoingTo('submit contact form with correct data');
+        $I->fillField('#contactform-name', 'tester');
+        $I->fillField('#contactform-email', 'tester@example.com');
+        $I->fillField('#contactform-subject', 'test subject');
+        $I->fillField('#contactform-body', 'test content');
+        $I->fillField('#contactform-verifycode', 'testme');
+
+        $I->click('contact-button');
+
+        $I->dontSeeElement('#contact-form');
+        $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Acceptance\HomeCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
+use yii\helpers\Url;
+
+final class HomeCest
+{
+    public function ensureThatHomePageWorks(AcceptanceTester $I)
+    {
+        $I->amOnPage(Url::toRoute('/site/index'));
+        $I->see(\Yii::$app->name);
+
+        $I->seeLink('About');
+        $I->click('About');
+
+        $I->see('This is the About page.');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Acceptance\LoginCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Acceptance;
+
+use app\tests\Support\AcceptanceTester;
+use yii\helpers\Url;
+
+final class LoginCest
+{
+    public function ensureThatLoginWorks(AcceptanceTester $I)
+    {
+        $I->amOnPage(Url::toRoute('/site/login'));
+        $I->see('Login', 'h1');
+
+        $I->amGoingTo('try to login with correct credentials');
+        $I->fillField('input[name="LoginForm[username]"]', 'admin');
+        $I->fillField('input[name="LoginForm[password]"]', 'admin');
+        $I->click('login-button');
+
+        $I->expectTo('see user info');
+        $I->see('Logout');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Acceptance\_bootstrap.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+
+
+# ============================================================
+# FILE: .\tests\Functional\ContactFormCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Functional;
+
+use app\tests\Support\FunctionalTester;
+
+final class ContactFormCest
+{
+    public function _before(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/contact');
+    }
+
+    public function openContactPage(FunctionalTester $I)
+    {
+        $I->see('Contact', 'h1');
+    }
+
+    public function submitEmptyForm(FunctionalTester $I)
+    {
+        $I->submitForm('#contact-form', []);
+        $I->expectTo('see validations errors');
+        $I->see('Contact', 'h1');
+        $I->see('Name cannot be blank');
+        $I->see('Email cannot be blank');
+        $I->see('Subject cannot be blank');
+        $I->see('Body cannot be blank');
+        $I->see('The verification code is incorrect');
+    }
+
+    public function submitFormWithIncorrectEmail(FunctionalTester $I)
+    {
+        $I->submitForm('#contact-form', [
+            'ContactForm[name]' => 'tester',
+            'ContactForm[email]' => 'tester.email',
+            'ContactForm[subject]' => 'test subject',
+            'ContactForm[body]' => 'test content',
+            'ContactForm[verifyCode]' => 'testme',
+        ]);
+        $I->expectTo('see that email address is wrong');
+        $I->dontSee('Name cannot be blank', '.help-inline');
+        $I->see('Email is not a valid email address.');
+        $I->dontSee('Subject cannot be blank', '.help-inline');
+        $I->dontSee('Body cannot be blank', '.help-inline');
+        $I->dontSee('The verification code is incorrect', '.help-inline');
+    }
+
+    public function submitFormSuccessfully(FunctionalTester $I)
+    {
+        $I->submitForm('#contact-form', [
+            'ContactForm[name]' => 'tester',
+            'ContactForm[email]' => 'tester@example.com',
+            'ContactForm[subject]' => 'test subject',
+            'ContactForm[body]' => 'test content',
+            'ContactForm[verifyCode]' => 'testme',
+        ]);
+        $I->seeEmailIsSent();
+        $I->dontSeeElement('#contact-form');
+        $I->see('Thank you for contacting us. We will respond to you as soon as possible.');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Functional\LoginFormCest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Functional;
+
+use app\tests\Support\FunctionalTester;
+
+final class LoginFormCest
+{
+    public function _before(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/login');
+    }
+
+    public function openLoginPage(FunctionalTester $I)
+    {
+        $I->see('Login', 'h1');
+    }
+
+    // demonstrates `amLoggedInAs` method
+    public function internalLoginById(FunctionalTester $I)
+    {
+        $I->amLoggedInAs(100);
+        $I->amOnPage('/');
+        $I->see('Logout (admin)');
+    }
+
+    // demonstrates `amLoggedInAs` method
+    public function internalLoginByInstance(FunctionalTester $I)
+    {
+        $I->amLoggedInAs(\app\models\User::findByUsername('admin'));
+        $I->amOnPage('/');
+        $I->see('Logout (admin)');
+    }
+
+    public function loginWithEmptyCredentials(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', []);
+        $I->expectTo('see validations errors');
+        $I->see('Username cannot be blank.');
+        $I->see('Password cannot be blank.');
+    }
+
+    public function loginWithWrongCredentials(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', [
+            'LoginForm[username]' => 'admin',
+            'LoginForm[password]' => 'wrong',
+        ]);
+        $I->expectTo('see validations errors');
+        $I->see('Incorrect username or password.');
+    }
+
+    public function loginSuccessfully(FunctionalTester $I)
+    {
+        $I->submitForm('#login-form', [
+            'LoginForm[username]' => 'admin',
+            'LoginForm[password]' => 'admin',
+        ]);
+        $I->see('Logout (admin)');
+        $I->dontSeeElement('form#login-form');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Functional\_bootstrap.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+
+
+# ============================================================
+# FILE: .\tests\Support\MailerBootstrap.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Support;
+
+use Yii;
+use yii\base\Application;
+use yii\base\BootstrapInterface;
+use yii\mail\MailerInterface;
+
+/**
+ * Registers the application mailer component as the DI container singleton for {@see MailerInterface}.
+ *
+ * Codeception replaces `components.mailer` with its own TestMailer to capture sent emails.
+ * Since the DI container is configured before the mailer mock, this bootstrap ensures
+ * the DI singleton resolves to the same mailer instance used by the application.
+ */
+final class MailerBootstrap implements BootstrapInterface
+{
+    /**
+     * @param Application $app Application instance.
+     */
+    public function bootstrap($app): void
+    {
+        Yii::$container->setSingleton(MailerInterface::class, $app->mailer);
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\LoginTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Unit;
+
+use app\controllers\SiteController;
+use app\models\User;
+use Yii;
+use yii\base\Security;
+use yii\web\View;
+
+final class LoginTest extends \Codeception\Test\Unit
+{
+    public function testRenderLoginWrongUsername(): void
+    {
+        $controller = new SiteController(
+            'site',
+            Yii::$app,
+            Yii::$app->mailer,
+            new Security(),
+        );
+
+        $view = new View(['context' => $controller]);
+
+        Yii::$app->user->login(new User());
+
+        $controller->actionLogin();
+
+        self::assertStringNotContainsString(
+            'Logout (admin)',
+            $view->render('//layouts/main.php', ['content' => 'Hello World°']),
+            'Failed asserting that the logout link is not rendered for a wrong username.',
+        );
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\LogoutTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Unit;
+
+use app\controllers\SiteController;
+use app\models\User;
+use Yii;
+use yii\base\Security;
+use yii\web\IdentityInterface;
+use yii\web\View;
+
+final class LogoutTest extends \Codeception\Test\Unit
+{
+    public function testRenderLogoutLinkWhenUserIsLoggedIn(): void
+    {
+        $user = User::findIdentity('100');
+
+        $controller = new SiteController(
+            'site',
+            Yii::$app,
+            Yii::$app->mailer,
+            new Security(),
+        );
+
+        $view = new View(['context' => $controller]);
+
+        self::assertNotNull(
+            $user,
+            "Failed asserting that the user identity with ID '100' exists.",
+        );
+        self::assertInstanceOf(
+            IdentityInterface::class,
+            $user,
+            "Failed asserting that the identity is an instance of 'Identity' class.",
+        );
+
+        Yii::$app->user->login($user);
+
+        $html = $view->render('//layouts/main.php', ['content' => 'Hello World°']);
+
+        self::assertStringContainsString(
+            'Logout (admin)',
+            $html,
+            'Failed asserting that the logout link is rendered for a logged-in user.',
+        );
+        self::assertStringContainsString(
+            'data-method="post"',
+            $html,
+            'Failed asserting that the logout link uses POST method.',
+        );
+
+        $controller->actionLogout();
+
+        $html = $view->render('//layouts/main.php', ['content' => 'Hello World°']);
+
+        self::assertStringNotContainsString(
+            'Logout (admin)',
+            $html,
+            'Failed asserting that the logout link is not rendered after logout.',
+        );
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\Models\ContactFormTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Unit\Models;
+
+use app\models\ContactForm;
+use Yii;
+use yii\mail\MessageInterface;
+
+final class ContactFormTest extends \Codeception\Test\Unit
+{
+    public mixed $tester = null;
+
+    public function testEmailIsSentOnContact()
+    {
+        $model = new ContactForm();
+
+        $model->attributes = [
+            'name' => 'Tester',
+            'email' => 'tester@example.com',
+            'subject' => 'very important letter subject',
+            'body' => 'body of current message',
+            'verifyCode' => 'testme',
+        ];
+
+        verify($model->contact(Yii::$app->mailer, 'admin@example.com', 'noreply@example.com', 'Example.com mailer'))->notEmpty();
+
+        // using Yii2 module actions to check email was sent
+        $this->tester->seeEmailIsSent();
+
+        /** @var MessageInterface $emailMessage */
+        $emailMessage = $this->tester->grabLastSentEmail();
+
+        verify($emailMessage)->instanceOf('yii\mail\MessageInterface');
+        verify($emailMessage->getTo())->arrayHasKey('admin@example.com');
+        verify($emailMessage->getFrom())->arrayHasKey('noreply@example.com');
+        verify($emailMessage->getReplyTo())->arrayHasKey('tester@example.com');
+        verify($emailMessage->getSubject())->equals('very important letter subject');
+        verify($emailMessage->toString())->stringContainsString('body of current message');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\Models\LoginFormTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Unit\Models;
+
+use app\models\LoginForm;
+use Yii;
+use yii\base\Security;
+
+final class LoginFormTest extends \Codeception\Test\Unit
+{
+    private $_model;
+
+    protected function _after()
+    {
+        Yii::$app->user->logout();
+    }
+
+    public function testLoginNoUser()
+    {
+        $this->_model = new LoginForm(
+            new Security(),
+            [
+                'username' => 'not_existing_username',
+                'password' => 'not_existing_password',
+            ],
+        );
+
+        verify($this->_model->login())->false();
+        verify(Yii::$app->user->isGuest)->true();
+    }
+
+    public function testLoginWrongPassword()
+    {
+        $this->_model = new LoginForm(
+            new Security(),
+            [
+                'username' => 'demo',
+                'password' => 'wrong_password',
+            ],
+        );
+
+        verify($this->_model->login())->false();
+        verify(Yii::$app->user->isGuest)->true();
+        verify($this->_model->errors)->arrayHasKey('password');
+    }
+
+    public function testLoginCorrect()
+    {
+        $this->_model = new LoginForm(
+            new Security(),
+            [
+                'username' => 'demo',
+                'password' => 'demo',
+            ],
+        );
+
+        verify($this->_model->login())->true();
+        verify(Yii::$app->user->isGuest)->false();
+        verify($this->_model->errors)->arrayHasNotKey('password');
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\Models\UserTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\tests\Unit\Models;
+
+use app\models\User;
+
+final class UserTest extends \Codeception\Test\Unit
+{
+    public function testFindUserById()
+    {
+        /** @var User $user */
+        $user = User::findIdentity(100);
+
+        verify($user)->notEmpty();
+        verify($user->username)->equals('admin');
+        verify(User::findIdentity(999))->empty();
+    }
+
+    public function testFindUserByAccessToken()
+    {
+        /** @var User $user */
+        $user = User::findIdentityByAccessToken('100-token');
+
+        verify($user)->notEmpty();
+        verify($user->username)->equals('admin');
+        verify(User::findIdentityByAccessToken('non-existing'))->empty();
+    }
+
+    public function testFindUserByUsername()
+    {
+        /** @var User $user */
+        $user = User::findByUsername('admin');
+
+        verify($user)->notEmpty();
+        verify(User::findByUsername('not-admin'))->empty();
+    }
+
+    /**
+     * @depends testFindUserByUsername
+     */
+    public function testValidateUser()
+    {
+        /** @var User $user */
+        $user = User::findByUsername('admin');
+
+        verify($user->validateAuthKey('test100key'))->notEmpty();
+        verify($user->validateAuthKey('test102key'))->empty();
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\_bootstrap.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+// add unit testing specific bootstrap code here
+
+
+
+# ============================================================
+# FILE: .\tests\Unit\widgets\AlertTest.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+namespace tests\unit\widgets;
+
+use app\widgets\Alert;
+use Yii;
+
+class AlertTest extends \Codeception\Test\Unit
+{
+    public function testSingleErrorMessage()
+    {
+        $message = 'This is an error message';
+
+        Yii::$app->session->setFlash('error', $message);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($message);
+        verify($renderingResult)->stringContainsString('alert-danger');
+
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testMultipleErrorMessages()
+    {
+        $firstMessage = 'This is the first error message';
+        $secondMessage = 'This is the second error message';
+
+        Yii::$app->session->setFlash('error', [$firstMessage, $secondMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstMessage);
+        verify($renderingResult)->stringContainsString($secondMessage);
+        verify($renderingResult)->stringContainsString('alert-danger');
+
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testSingleDangerMessage()
+    {
+        $message = 'This is a danger message';
+
+        Yii::$app->session->setFlash('danger', $message);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($message);
+        verify($renderingResult)->stringContainsString('alert-danger');
+
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testMultipleDangerMessages()
+    {
+        $firstMessage = 'This is the first danger message';
+        $secondMessage = 'This is the second danger message';
+
+        Yii::$app->session->setFlash('danger', [$firstMessage, $secondMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstMessage);
+        verify($renderingResult)->stringContainsString($secondMessage);
+        verify($renderingResult)->stringContainsString('alert-danger');
+
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testSingleSuccessMessage()
+    {
+        $message = 'This is a success message';
+
+        Yii::$app->session->setFlash('success', $message);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($message);
+        verify($renderingResult)->stringContainsString('alert-success');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testMultipleSuccessMessages()
+    {
+        $firstMessage = 'This is the first danger message';
+        $secondMessage = 'This is the second danger message';
+
+        Yii::$app->session->setFlash('success', [$firstMessage, $secondMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstMessage);
+        verify($renderingResult)->stringContainsString($secondMessage);
+        verify($renderingResult)->stringContainsString('alert-success');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testSingleInfoMessage()
+    {
+        $message = 'This is an info message';
+
+        Yii::$app->session->setFlash('info', $message);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($message);
+        verify($renderingResult)->stringContainsString('alert-info');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testMultipleInfoMessages()
+    {
+        $firstMessage = 'This is the first info message';
+        $secondMessage = 'This is the second info message';
+
+        Yii::$app->session->setFlash('info', [$firstMessage, $secondMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstMessage);
+        verify($renderingResult)->stringContainsString($secondMessage);
+        verify($renderingResult)->stringContainsString('alert-info');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-warning');
+    }
+
+    public function testSingleWarningMessage()
+    {
+        $message = 'This is a warning message';
+
+        Yii::$app->session->setFlash('warning', $message);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($message);
+        verify($renderingResult)->stringContainsString('alert-warning');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+    }
+
+    public function testMultipleWarningMessages()
+    {
+        $firstMessage = 'This is the first warning message';
+        $secondMessage = 'This is the second warning message';
+
+        Yii::$app->session->setFlash('warning', [$firstMessage, $secondMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstMessage);
+        verify($renderingResult)->stringContainsString($secondMessage);
+        verify($renderingResult)->stringContainsString('alert-warning');
+
+        verify($renderingResult)->stringNotContainsString('alert-danger');
+        verify($renderingResult)->stringNotContainsString('alert-success');
+        verify($renderingResult)->stringNotContainsString('alert-info');
+    }
+
+    public function testSingleMixedMessages()
+    {
+        $errorMessage = 'This is an error message';
+        $dangerMessage = 'This is a danger message';
+        $successMessage = 'This is a success message';
+        $infoMessage = 'This is a info message';
+        $warningMessage = 'This is a warning message';
+
+        Yii::$app->session->setFlash('error', $errorMessage);
+        Yii::$app->session->setFlash('danger', $dangerMessage);
+        Yii::$app->session->setFlash('success', $successMessage);
+        Yii::$app->session->setFlash('info', $infoMessage);
+        Yii::$app->session->setFlash('warning', $warningMessage);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($errorMessage);
+        verify($renderingResult)->stringContainsString($dangerMessage);
+        verify($renderingResult)->stringContainsString($successMessage);
+        verify($renderingResult)->stringContainsString($infoMessage);
+        verify($renderingResult)->stringContainsString($warningMessage);
+
+        verify($renderingResult)->stringContainsString('alert-danger');
+        verify($renderingResult)->stringContainsString('alert-success');
+        verify($renderingResult)->stringContainsString('alert-info');
+        verify($renderingResult)->stringContainsString('alert-warning');
+    }
+
+    public function testMultipleMixedMessages()
+    {
+        $firstErrorMessage = 'This is the first error message';
+        $secondErrorMessage = 'This is the second error message';
+        $firstDangerMessage = 'This is the first danger message';
+        $secondDangerMessage = 'This is the second';
+        $firstSuccessMessage = 'This is the first success message';
+        $secondSuccessMessage = 'This is the second success message';
+        $firstInfoMessage = 'This is the first info message';
+        $secondInfoMessage = 'This is the second info message';
+        $firstWarningMessage = 'This is the first warning message';
+        $secondWarningMessage = 'This is the second warning message';
+
+        Yii::$app->session->setFlash('error', [$firstErrorMessage, $secondErrorMessage]);
+        Yii::$app->session->setFlash('danger', [$firstDangerMessage, $secondDangerMessage]);
+        Yii::$app->session->setFlash('success', [$firstSuccessMessage, $secondSuccessMessage]);
+        Yii::$app->session->setFlash('info', [$firstInfoMessage, $secondInfoMessage]);
+        Yii::$app->session->setFlash('warning', [$firstWarningMessage, $secondWarningMessage]);
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->stringContainsString($firstErrorMessage);
+        verify($renderingResult)->stringContainsString($secondErrorMessage);
+        verify($renderingResult)->stringContainsString($firstDangerMessage);
+        verify($renderingResult)->stringContainsString($secondDangerMessage);
+        verify($renderingResult)->stringContainsString($firstSuccessMessage);
+        verify($renderingResult)->stringContainsString($secondSuccessMessage);
+        verify($renderingResult)->stringContainsString($firstInfoMessage);
+        verify($renderingResult)->stringContainsString($secondInfoMessage);
+        verify($renderingResult)->stringContainsString($firstWarningMessage);
+        verify($renderingResult)->stringContainsString($secondWarningMessage);
+
+        verify($renderingResult)->stringContainsString('alert-danger');
+        verify($renderingResult)->stringContainsString('alert-success');
+        verify($renderingResult)->stringContainsString('alert-info');
+        verify($renderingResult)->stringContainsString('alert-warning');
+    }
+
+    public function testSkipsSessionStartWhenNoSessionExists()
+    {
+        $session = Yii::$app->session;
+
+        // Ensure the session is closed and no session cookie is present.
+        $session->close();
+
+        unset($_COOKIE[$session->getName()]);
+
+        verify($session->getIsActive())->false();
+        verify($session->getHasSessionId())->false();
+
+        $renderingResult = Alert::widget();
+
+        verify($renderingResult)->equals('');
+        verify($session->getIsActive())->false();
+    }
+
+    public function testFlashIntegrity()
+    {
+        $errorMessage = 'This is an error message';
+        $unrelatedMessage = 'This is a message that is not related to the alert widget';
+
+        Yii::$app->session->setFlash('error', $errorMessage);
+        Yii::$app->session->setFlash('unrelated', $unrelatedMessage);
+
+        Alert::widget();
+
+        // Simulate redirect
+        Yii::$app->session->close();
+        Yii::$app->session->open();
+
+        verify(Yii::$app->session->getFlash('error'))->empty();
+        verify(Yii::$app->session->getFlash('unrelated'))->equals($unrelatedMessage);
+    }
+}
+
+
+
+# ============================================================
+# FILE: .\tests\_bootstrap.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'test');
+
+require_once __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+
+
+# ============================================================
+# FILE: .\views\layouts\_footer.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+
+use yii\helpers\Html;
+
+?>
+<footer id="footer" class="mt-auto py-3 bg-body-tertiary">
+    <div class="container">
+        <div class="row text-body-secondary">
+            <div class="col-md-6 text-center text-md-start">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
+            <div class="col-md-6 text-center text-md-end">
+                <a href="https://www.yiiframework.com/" rel="external" class="text-body-secondary text-decoration-none">
+                    <?= Yii::t(
+                        'yii',
+                        'Powered by {yii}',
+                        ['yii' => ''],
+                    ) ?>
+                    <?= Html::img(
+                        '@web/images/yii3_full_for_light.svg',
+                        [
+                            'alt' => 'Yii Framework',
+                            'class' => 'align-text-bottom footer-logo-light',
+                            'height' => '28',
+                        ],
+                    ) ?>
+                    <?= Html::img(
+                        '@web/images/yii3_full_for_dark.svg',
+                        [
+                            'alt' => 'Yii Framework',
+                            'class' => 'align-text-bottom footer-logo-dark',
+                            'height' => '28',
+                        ],
+                    ) ?>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+# ============================================================
+# FILE: .\views\layouts\_fullscreen_header.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?>
+<div class="main-menu">
+    <div class="logo">
+        <a href="<?= Url::home() ?>"><img src="images/logo.png"></a>
+    </div>
+    <ul class="nav-links">
+        <!-- Пункт 1: Полеты -->
+        <li class="dropdown">
+            <a href="#">Полеты <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <!-- Пункт 2: Обучение -->
+        <li class="dropdown">
+            <a href="#">Обучение <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <!-- Пункт 3: Тандемный полет -->
+        <li class="dropdown">
+            <a href="#">Тандемный полет <i class="fas fa-chevron-down"></i></a>
+        </li>
+        <li><a href="<?= Url::to(['/site/about']) ?>">О нас</a></li>
+    </ul>
+    <div class="social-icons">
+        <a href="https://vk.com/parachelovek" target="_blank"><i class="fab fa-vk"></i></a>
+        <a href="https://t.me/FreeVmaya" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.youtube.com/watch?v=91N4xSpAqcU&list=PLoIsyK8Icrv3F6OcKH-w5OpjKuV30OYNq&index=3" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+
+
+# ============================================================
+# FILE: .\views\layouts\_head.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+
+use app\assets\AppAsset;
+
+AppAsset::register($this);
+
+$this->registerCsrfMetaTags();
+$this->registerMetaTag(
+    ['charset' => Yii::$app->charset],
+    'charset',
+);
+$this->registerMetaTag(
+    [
+        'name' => 'viewport',
+        'content' => 'width=device-width, initial-scale=1',
+    ],
+);
+if (!empty($this->params['meta_description'])) {
+    $this->registerMetaTag(
+        [
+            'name' => 'description',
+            'content' => $this->params['meta_description'],
+        ],
+    );
+}
+if (!empty($this->params['meta_keywords'])) {
+    $this->registerMetaTag(
+        [
+            'name' => 'keywords',
+            'content' => $this->params['meta_keywords'],
+        ],
+    );
+}
+$this->registerLinkTag(
+    [
+        'rel' => 'icon',
+        'type' => 'image/x-icon',
+        'href' => Yii::getAlias('@web/favicon.ico'),
+    ],
+);
+
+
+
+# ============================================================
+# FILE: .\views\layouts\_header.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
+use yii\helpers\Html;
+
+$items = [
+    [
+        'label' => 'Домашняя',
+        'url' => ['/site/index'],
+    ],
+    [
+        'label' => 'О нас',
+        'url' => ['/site/about'],
+    ],
+    [
+        'label' => 'Контакты',
+        'url' => ['/site/contact'],
+    ]/*,
+    [
+        'label' => 'Login',
+        'url' => ['/site/login'],
+        'visible' => Yii::$app->user->isGuest,
+    ],
+    [
+        'label' => 'Logout (' . Html::encode(Yii::$app->user->identity?->username ?? '') . ')',
+        'url' => ['/site/logout'],
+        'linkOptions' => [
+            'data-method' => 'post',
+            'class' => 'nav-link logout',
+        ],
+        'visible' => !Yii::$app->user->isGuest,
+    ],*/
+];
+
+?>
+<header id="header">
+    <?php NavBar::begin(
+        [
+            'brandLabel' => Yii::$app->name,
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        ],
+    ) ?>
+    <?= Nav::widget(
+        [
+            'options' => ['class' => 'navbar-nav me-auto'],
+            'encodeLabels' => false,
+            'items' => $items,
+        ],
+    ) ?>
+    <?= Html::button(
+        '&#127769;',
+        [
+            'id' => 'theme-toggle',
+            'class' => 'btn btn-link nav-link fs-5',
+            'aria-label' => 'Switch to dark mode',
+        ],
+    ) ?>
+    <?php NavBar::end() ?>
+</header>
+
+
+
+# ============================================================
+# FILE: .\views\layouts\main-fullscreen.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+/** @var string $content */
+
+use app\widgets\Alert;
+use yii\helpers\Html;
+
+$this->render('_head');
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>" class="h-100" data-bs-theme="light">
+<head>
+    <?php $this->head() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Блоки для постраничного скролла */
+        .page-section {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow-y: auto;
+            scroll-snap-align: start;
+        }
+
+        /* Верхнее меню (прозрачное поверх видео) */
+        .main-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-weight: 500;
+        }
+
+        .logo a {
+            color: white;
+            font-size: 1.6rem;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.3s;
+            padding: 8px 0;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: #ffd966;
+        }
+
+        /* Выпадающее меню */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px);
+            min-width: 180px;
+            top: 35px;
+            left: 0;
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            z-index: 1100;
+        }
+
+        .dropdown-content a {
+            color: #f0f0f0;
+            padding: 8px 20px;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 217, 102, 0.2);
+            color: #ffd966;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Соцсети справа */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.4rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ffd966;
+            transform: translateY(-2px);
+        }
+
+        /* Блок 1 – видео на всю область */
+        .video-section {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Для видео в секциях */
+        .video-section video  {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: -1;
+        }
+
+        .hero-text {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Стрелка вниз */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            z-index: 10;
+            animation: bounce 2s infinite;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s;
+        }
+
+        .scroll-down:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .scroll-down i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Блоки контента (пример) */
+        .content-block {
+            background: #1a2a32;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .content-block:nth-child(even) {
+            background: #0f1a1f;
+        }
+
+        .content-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-block p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .main-menu {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 0.8rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-text h2 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .content-block h2 {
+                font-size: 1.8rem;
+            }
+            .content-block p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Скролл-снап для вертикальной привязки */
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .page-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<?php $this->beginBody() ?>
+
+<?= $this->render('_fullscreen_header') ?>
+
+<div class="scroll-container" id="scrollContainer">
+    <?= $content ?>
+</div>
+
+<script>
+    (function() {
+        const container = document.getElementById('scrollContainer');
+        const sections = Array.from(document.querySelectorAll('.page-section'));
+        const arrowBtns = document.querySelectorAll('.scroll-down');
+        
+        let currentIndex = 0;
+        let isScrolling = false;
+        
+        function scrollToSection(index) {
+            if (index < 0 || index >= sections.length || isScrolling) return;
+            isScrolling = true;
+            sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => { isScrolling = false; }, 800);
+            currentIndex = index;
+        }
+        
+        // Обработчики для всех кнопок
+        arrowBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                // Находим индекс следующей секции
+                const currentSection = btn.closest('.page-section');
+                const currentIdx = sections.findIndex(sect => sect === currentSection);
+                if (currentIdx !== -1 && currentIdx < sections.length - 1) {
+                    scrollToSection(currentIdx + 1);
+                }
+            });
+        });
+        
+        let wheelTimeout = null;
+        function handleWheel(e) {
+            if (isScrolling) return;
+            const delta = e.deltaY;
+            if (wheelTimeout) clearTimeout(wheelTimeout);
+            wheelTimeout = setTimeout(() => {
+                if (delta > 30) {
+                    if (currentIndex < sections.length - 1) {
+                        scrollToSection(currentIndex + 1);
+                    }
+                } else if (delta < -30) {
+                    if (currentIndex > 0) {
+                        scrollToSection(currentIndex - 1);
+                    }
+                }
+                wheelTimeout = null;
+            }, 100);
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                    const idx = sections.findIndex(sect => sect === entry.target);
+                    if (idx !== -1) {
+                        currentIndex = idx;
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        sections.forEach(section => observer.observe(section));
+        container.addEventListener('wheel', handleWheel, { passive: false });
+        
+        // Для мобильных устройств - тач-события
+        let touchStartY = 0;
+        container.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        container.addEventListener('touchend', (e) => {
+            const touchEndY = e.changedTouches[0].clientY;
+            const diff = touchStartY - touchEndY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentIndex < sections.length - 1) {
+                    scrollToSection(currentIndex + 1);
+                } else if (diff < 0 && currentIndex > 0) {
+                    scrollToSection(currentIndex - 1);
+                }
+            }
+        }, { passive: true });
+    })();
+</script>
+
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
+
+
+# ============================================================
+# FILE: .\views\layouts\main.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+/** @var string $content */
+
+use app\widgets\Alert;
+use yii\bootstrap5\Breadcrumbs;
+use yii\helpers\Html;
+
+$this->render('_head');
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>" class="h-100" data-bs-theme="light">
+<head>
+    <?php $this->head() ?>
+    <title><?= Html::encode($this->title) ?></title>
+</head>
+<body class="d-flex flex-column h-100">
+<?php $this->beginBody() ?>
+
+<?= $this->render('_header') ?>
+
+<main id="main" class="flex-grow-1" role="main">
+    <div class="container">
+        <?php if (!empty($this->params['breadcrumbs'])): ?>
+            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
+        <?php endif ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
+    </div>
+</main>
+
+<?= $this->render('_footer') ?>
+
+<?php $this->endBody() ?>
+</body>
+</html>
+<?php $this->endPage() ?>
+
+
+
+# ============================================================
+# FILE: .\views\site\about.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/** @var yii\web\View $this */
+
+use yii\helpers\Html;
+
+$this->title = 'About';
+$this->params['breadcrumbs'][] = $this->title;
+$this->params['meta_description'] = 'Learn more about this Yii2-powered application.';
+$this->params['meta_keywords'] = 'yii, yii2, about, php, framework';
+?>
+<div class="site-about d-flex align-items-center justify-content-center text-center">
+    <div class="site-about-content mx-auto">
+        <h1 class="display-6 fw-semibold mb-3">This is the About page.</h1>
+
+        <p class="text-body-secondary mb-4">
+            You may modify the following file to customize its content:
+            <?php if (YII_DEBUG): ?>
+                <code class="d-block mt-2"><?= __FILE__ ?></code>
+            <?php endif; ?>
+        </p>
+
+        <?= Html::a(
+            'Go to Homepage',
+            Yii::$app->homeUrl,
+            ['class' => 'btn btn-outline-primary btn-lg'],
+        ) ?>
+    </div>
+</div>
+
+
+
+# ============================================================
+# FILE: .\views\site\contact.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/** @var yii\web\View $this */
+/** @var yii\bootstrap5\ActiveForm $form */
+/** @var app\models\ContactForm $model */
+
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
+use yii\captcha\Captcha;
+
+$this->title = 'Contact us';
+$this->params['breadcrumbs'][] = $this->title;
+$this->params['meta_description'] = 'Get in touch with us. Send us a message using the contact form.';
+$this->params['meta_keywords'] = 'yii, yii2, contact, support, feedback';
+$htmlIcon = <<<HTML
+{label}<div class="input-group"><span class="input-group-text" aria-hidden="true">%s</span>{input}</div>{error}{hint}
+HTML;
+$labelOptions = ['class' => 'form-label fw-semibold small'];
+?>
+<?php if (Yii::$app->session->hasFlash('success')): ?>
+
+<div class="site-contact-success d-flex align-items-center justify-content-center text-center">
+    <div class="site-contact-success-content mx-auto">
+        <h1 class="display-6 fw-semibold mb-3">Message sent</h1>
+
+        <?php if (YII_DEBUG && Yii::$app->mailer->useFileTransport): ?>
+            <p class="text-body-tertiary small mb-4">
+                Development mode: email saved under
+                <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>
+            </p>
+        <?php endif; ?>
+
+        <?= Html::a(
+            'Send another message',
+            ['contact'],
+            ['class' => 'btn btn-outline-primary btn-lg'],
+        ) ?>
+    </div>
+</div>
+
+<?php else: ?>
+
+<div class="site-contact d-flex align-items-center justify-content-center py-5">
+    <div class="card border-0 overflow-hidden login-split-card login-split-card-wide">
+        <div class="row g-0">
+
+            <!-- Brand panel -->
+            <div class="col-md-4 d-none d-md-flex login-brand-panel text-white">
+                <div class="d-flex flex-column justify-content-between p-4 p-lg-5 w-100">
+                    <div>
+                        <?= Html::img(
+                            Yii::getAlias('@web/images/yii3_full_white_for_dark.svg'),
+                            [
+                                'alt' => 'Yii Framework',
+                                'class' => 'mb-4',
+                                'height' => 40,
+                            ],
+                        ) ?>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-3 login-brand-title">
+                            Get In<br>Touch
+                        </h2>
+                        <p class="opacity-75 mb-0 login-brand-text">
+                            Have a question or business inquiry? We would love to hear from you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form panel -->
+            <div class="col-md-8">
+                <div class="p-4 p-lg-5">
+                    <div class="text-center mb-4">
+                        <div class="d-md-none mb-3">
+                            <?= Html::img(
+                                Yii::getAlias('@web/images/yii3_full_black_for_light.svg'),
+                                [
+                                    'alt' => 'Yii Framework',
+                                    'class' => 'login-mobile-logo',
+                                    'height' => 36,
+                                ],
+                            ) ?>
+                        </div>
+                        <h1 class="h3 fw-bold mb-1"><?= Html::encode($this->title) ?></h1>
+                        <p class="text-body-secondary small">Fill out the form below and we will get back to you</p>
+                    </div>
+
+                    <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <?= $form->field($model, 'name', [
+                                'options' => ['class' => 'mb-0'],
+                                'template' => sprintf($htmlIcon, '&#128100;'),
+                                'inputOptions' => [
+                                    'class' => 'form-control',
+                                    'placeholder' => 'Name',
+                                    'autofocus' => true,
+                                ],
+                            ])->label('Your Name', $labelOptions) ?>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <?= $form->field($model, 'email', [
+                                'options' => ['class' => 'mb-0'],
+                                'template' => sprintf($htmlIcon, '&#9993;'),
+                                'inputOptions' => [
+                                    'class' => 'form-control',
+                                    'placeholder' => 'email@example.com',
+                                ],
+                            ])->label('Your Email', $labelOptions) ?>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'subject', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => sprintf($htmlIcon, '&#128172;'),
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'Subject',
+                            ],
+                        ])->label('Subject', $labelOptions) ?>
+                    </div>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'body', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => '{label}{input}{error}{hint}',
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'Your message...',
+                            ],
+                        ])->textarea()->label('Message', $labelOptions) ?>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                        <?= $form->field($model, 'verifyCode', [
+                            'enableLabel' => false,
+                            'options' => ['class' => ''],
+                            'inputOptions' => ['aria-label' => 'Verification code'],
+                        ])->widget(Captcha::class, [
+                            'template' => '<div class="d-flex align-items-center gap-2">{image}{input}</div>',
+                        ]) ?>
+
+                        <?= Html::submitButton(
+                            'Submit',
+                            [
+                                'class' => 'btn login-btn text-white px-4 ms-auto',
+                                'name' => 'contact-button',
+                            ],
+                        ) ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>
+
+
+
+# ============================================================
+# FILE: .\views\site\error.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+/** @var yii\web\View $this */
+/** @var string $name */
+/** @var string $message */
+/** @var Exception $exception */
+
+use yii\helpers\Html;
+use yii\web\HttpException;
+
+$this->title = $name;
+$statusCode = $exception instanceof HttpException ? $exception->statusCode : 500;
+?>
+<div class="site-error d-flex align-items-center justify-content-center text-center">
+    <div class="site-error-content mx-auto">
+        <h1 class="display-1 fw-bold text-body-secondary mb-0"><?= Html::encode($statusCode) ?></h1>
+
+        <h2 class="display-6 fw-semibold mb-3"><?= Html::encode($message) ?></h2>
+
+        <p class="text-body-secondary mb-4">
+            The above error occurred while the Web server was processing your request.
+            Please contact us if you think this is a server error. Thank you.
+        </p>
+
+        <?= Html::a(
+            'Go to Homepage',
+            Yii::$app->homeUrl,
+            ['class' => 'btn btn-outline-primary btn-lg'],
+        ) ?>
+    </div>
+</div>
+
+
+
+# ============================================================
+# FILE: .\views\site\index.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+/* @var $this yii\web\View */
+
+$this->title = 'Параплан Челябинск | Полеты и обучение';
+
+// Используем специальный layout для полноэкранного режима
+$this->context->layout = 'main-fullscreen';
+?>
+
+<!-- СЕКЦИЯ 1: ВИДЕО И ГЛАВНЫЙ ЭКРАН -->
+<section class="page-section video-section" id="section1">
+    <video autoplay muted loop playsinline>
+        <source src="/video/section-2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h1>Небо ближе, чем ты думаешь</h1>
+        <p>Полеты на параплане в Челябинске и выездные школы. Ощути свободу полета!</p>
+    </div>
+
+    <div class="scroll-down" id="arrowDown">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 2: Выезды и планы -->
+<section class="page-section video-section" id="section2">
+    <video autoplay muted loop playsinline>
+        <source src="/video/background-video-2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h2>Выезды и планы</h2>
+        <p>Еженедельные выезды в лучшие летные места Южного Урала: Аушкуль, Алтынташ, Аскарово, Банное, Воронино, Большеустьикинское и т.д.</p>
+        <p>Для новичков - старт с небольшой высоты под присмотром инструктора. Для опытных - маршруты на 50+ км.
+Планируем совместные выезды в Чегем, Крым, Дагестан и Гималаи. Следи за <a href="https://vk.me/join/LljJrc91zZTC5P8HeL1OnKLDTcONvQ95Ufg=" target="_blank">анонсами!</a></p>
+</p>
+    </div>
+
+    <div class="scroll-down" id="arrowDown2">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 3: Обучение -->
+<section class="page-section video-section" id="section3">
+    <video autoplay muted loop playsinline>
+        <source src="/video/section-3.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h2>Первоначальное обучение полетам на параплане в Челябинске</h2>
+        <p>Теория и наземная подготовка. Выездные сборы активных полетов с инструктором. Итог: навыки самостоятельного пилота.</p>
+        <p>От курсантов требуется желание научится летать (аки птицы), легкая но прочная одежда брюки/куртка/обувь по типу трекинговых, при наличии, шлем. При необходимости, парапланерное снаряжение выдается в аренду.<br>
+        Мы делаем акцент на безопасность!</p>
+
+        <p>Для участия свяжитесь с инструктором:</p>
+        <p style="display: flex; gap: 20px; justify-content: center; align-items: center; font-size: 2rem; margin-top: 10px;">
+            <a href="https://vk.com/fwadim" target="_blank">
+                <i class="fab fa-vk"></i>
+            </a>
+            <a href="https://t.me/FreeVmaya" target="_blank">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="tel:+79227540997">
+                <i class="fas fa-phone"></i>
+            </a>
+        </p>
+    </div>
+    
+    <div class="scroll-down" id="arrowDown3">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 4: Тандемный полет -->
+<section class="page-section video-section" id="section4">
+    <video autoplay muted loop playsinline>
+        <source src="/video/section-4.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h2>✨ Тандем – полет в подарок</h2>
+        <p>Полет с сертифицированным инструктором. Без подготовки, максимальная безопасность. Длительность – 15-25 минут, высота до 800 метров.</p>
+        <p>Стоимость: от 2500 ₽ (+видеосъемка). Заказать сейчас 
+        <p style="display: flex; gap: 20px; justify-content: center; align-items: center; font-size: 2rem; margin-top: 10px;">
+            <a href="https://vk.com/fwadim" target="_blank">
+                <i class="fab fa-vk"></i>
+            </a>
+            <a href="https://t.me/FreeVmaya" target="_blank">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="tel:+79227540997">
+                <i class="fas fa-phone"></i>
+            </a>
+        </p>
+    </div>
+    
+    <div class="scroll-down" id="arrowDown4">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 5: О нас -->
+<section class="page-section content-block" id="section5">
+    <h2>🏆 О нас</h2>
+    <p>Команда инструкторов с опытом полетов более 20 лет. Члены Федерации парапланерного спорта. Более 2000 успешных тандемов и 300 выпущенных пилотов.</p>
+    <p>Приходи знакомиться - проведём экскурсию и бесплатную лекцию о безопасности.</p>
+</section>
+
+
+# ============================================================
+# FILE: .\views\site\login.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+/** @var yii\web\View $this */
+/** @var yii\bootstrap5\ActiveForm $form */
+
+/** @var app\models\LoginForm $model */
+
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
+
+$this->title = 'Login to your account';
+$this->params['breadcrumbs'][] = $this->title;
+$this->params['meta_description'] = 'Log in to access your Yii2 application account.';
+$this->params['meta_keywords'] = 'yii, yii2, login, sign in, authentication';
+$htmlIcon = <<<HTML
+{label}<div class="input-group"><span class="input-group-text" aria-hidden="true">%s</span>{input}</div>{error}{hint}
+HTML;
+$labelOptions = ['class' => 'form-label fw-semibold small'];
+?>
+<div class="site-login d-flex align-items-center justify-content-center py-5">
+    <div class="card border-0 overflow-hidden login-split-card">
+        <div class="row g-0">
+
+            <!-- Brand panel -->
+            <div class="col-md-5 d-none d-md-flex login-brand-panel text-white">
+                <div class="d-flex flex-column justify-content-between p-4 p-lg-5 w-100">
+                    <div>
+                        <?= Html::img(
+                            Yii::getAlias('@web/images/yii3_full_white_for_dark.svg'),
+                            [
+                                'alt' => 'Yii Framework',
+                                'class' => 'mb-4',
+                                'height' => 40,
+                            ],
+                        ) ?>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-3 login-brand-title">
+                            Welcome<br>Back
+                        </h2>
+                        <p class="opacity-75 mb-0 login-brand-text">
+                            Log in to access your Yii2 application and manage your account.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form panel -->
+            <div class="col-md-7">
+                <div class="p-4 p-lg-5">
+                    <div class="text-center mb-4">
+                        <!-- Mobile-only logo -->
+                        <div class="d-md-none mb-3">
+                            <?= Html::img(
+                                Yii::getAlias('@web/images/yii3_full_black_for_light.svg'),
+                                [
+                                    'alt' => 'Yii Framework',
+                                    'class' => 'login-mobile-logo',
+                                    'height' => 36,
+                                ],
+                            ) ?>
+                        </div>
+                        <h1 class="h3 fw-bold mb-1"><?= Html::encode($this->title) ?></h1>
+                        <p class="text-body-secondary small">Enter your credentials to continue</p>
+                    </div>
+
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'username', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => sprintf($htmlIcon, '&#128100;'),
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'username',
+                                'autofocus' => true,
+                            ],
+                        ])->textInput()->label('Your Username', $labelOptions) ?>
+                    </div>
+
+                    <div class="mb-3">
+                        <?= $form->field($model, 'password', [
+                            'options' => ['class' => 'mb-0'],
+                            'template' => sprintf($htmlIcon, '&#128274;'),
+                            'inputOptions' => [
+                                'class' => 'form-control',
+                                'placeholder' => 'Password',
+                            ],
+                        ])->passwordInput()->label('Your Password', $labelOptions) ?>
+                    </div>
+
+                    <div class="mb-4">
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    </div>
+
+                    <div class="d-grid">
+                        <?= Html::submitButton(
+                            'Login',
+                            [
+                                'class' => 'btn login-btn btn-lg rounded-3 text-white',
+                                'name' => 'login-button',
+                            ],
+                        ) ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+
+                    <div class="text-body-secondary text-center mt-3 small">
+                        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
+                        To modify the username/password, check <code>app\models\User::$users</code>.
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+# ============================================================
+# FILE: .\web\index-test.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+// NOTE: Make sure this file is not accessible when deployed to production
+if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
+    die('You are not allowed to access this file.');
+}
+
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'test');
+
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
+
+$c3 = dirname(__DIR__) . '/c3.php';
+
+if (file_exists($c3)) {
+    require_once $c3;
+}
+
+$config = require __DIR__ . '/../config/test.php';
+
+(new yii\web\Application($config))->run();
+
+
+
+# ============================================================
+# FILE: .\web\index.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+// comment out the following two lines when deployed to production
+defined('YII_DEBUG') or define('YII_DEBUG', true);
+defined('YII_ENV') or define('YII_ENV', 'dev');
+
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
+
+$config = require __DIR__ . '/../config/web.php';
+
+(new yii\web\Application($config))->run();
+
+
+
+# ============================================================
+# FILE: .\widgets\Alert.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\widgets;
+
+use Yii;
+use yii\bootstrap5\Alert as BootstrapAlert;
+
+/**
+ * Alert widget renders a message from session flash. All flash messages are displayed
+ * in the sequence they were assigned using setFlash. You can set message as following:
+ *
+ * ```php
+ * Yii::$app->session->setFlash('error', 'This is the message');
+ * Yii::$app->session->setFlash('success', 'This is the message');
+ * Yii::$app->session->setFlash('info', 'This is the message');
+ * ```
+ *
+ * Multiple messages could be set as follows:
+ *
+ * ```php
+ * Yii::$app->session->setFlash('error', ['Error 1', 'Error 2']);
+ * ```
+ *
+ * @author Kartik Visweswaran <kartikv2@gmail.com>
+ * @author Alexander Makarov <sam@rmcreative.ru>
+ */
+class Alert extends \yii\bootstrap5\Widget
+{
+    /**
+     * @var array the alert types configuration for the flash messages.
+     * This array is setup as $key => $value, where:
+     * - key: the name of the session flash variable
+     * - value: the bootstrap alert type (i.e. danger, success, info, warning)
+     */
+    public array $alertTypes = [
+        'error'   => 'alert-danger',
+        'danger'  => 'alert-danger',
+        'success' => 'alert-success',
+        'info'    => 'alert-info',
+        'warning' => 'alert-warning'
+    ];
+    /**
+     * @var array the options for rendering the close button tag.
+     * Array will be passed to [[\yii\bootstrap\Alert::closeButton]].
+     */
+    public array $closeButton = [];
+    /**
+     * {@inheritdoc}
+     */
+    public function run(): void
+    {
+        $session = Yii::$app->session;
+
+        if (!$session->getIsActive() && !$session->getHasSessionId()) {
+            return;
+        }
+
+        $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
+
+        foreach (array_keys($this->alertTypes) as $type) {
+            $flash = $session->getFlash($type);
+
+            foreach ((array) $flash as $i => $message) {
+                echo BootstrapAlert::widget(
+                    [
+                        'body' => $message,
+                        'closeButton' => $this->closeButton,
+                        'options' => [
+                            ...$this->options,
+                            'id' => $this->getId() . '-' . $type . '-' . $i,
+                            'class' => $this->alertTypes[$type] . $appendClass
+                        ],
+                    ],
+                );
+            }
+
+            $session->removeFlash($type);
+        }
+    }
+}
+
+
+
