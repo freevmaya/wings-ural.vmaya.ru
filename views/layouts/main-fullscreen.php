@@ -36,6 +36,96 @@ $this->render('_head');
         let currentIndex = 0;
         let isScrolling = false;
         
+        // --- БУРГЕР-МЕНЮ ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        // Функция закрытия меню
+        function closeMenu() {
+            if (navLinks) navLinks.classList.remove('open');
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            }
+            dropdowns.forEach(d => d.classList.remove('open'));
+        }
+        
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+                this.classList.toggle('active');
+                
+                const icon = this.querySelector('i');
+                if (icon) {
+                    if (navLinks.classList.contains('open')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                }
+            });
+            
+            // Клик вне меню закрывает его
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.main-menu')) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        // --- ДЛЯ МОБИЛЬНЫХ: открытие/закрытие dropdown ---
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 900) {
+                        // Проверяем, является ли ссылка якорем секции
+                        const href = this.getAttribute('href');
+                        if (href && href.startsWith('#section')) {
+                            // Это ссылка на секцию - закрываем меню и скроллим
+                            e.preventDefault();
+                            closeMenu();
+                            const targetId = href.substring(1);
+                            scrollToSectionById(targetId);
+                            return;
+                        }
+                        // Это ссылка с выпадающим меню
+                        e.preventDefault();
+                        const isOpen = dropdown.classList.contains('open');
+                        dropdowns.forEach(d => d.classList.remove('open'));
+                        if (!isOpen) {
+                            dropdown.classList.add('open');
+                        }
+                        if (!navLinks.classList.contains('open')) {
+                            navLinks.classList.add('open');
+                            menuToggle.classList.add('active');
+                            const icon = menuToggle.querySelector('i');
+                            if (icon) {
+                                icon.className = 'fas fa-times';
+                            }
+                        }
+                    }
+                });
+            }
+        });
+        
+        // --- ОБРАБОТЧИКИ ДЛЯ ССЫЛОК В МЕНЮ (включая десктоп) ---
+        document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                // Закрываем меню перед скроллом
+                closeMenu();
+                scrollToSectionById(targetId);
+            });
+        });
+        // --- КОНЕЦ БУРГЕР-МЕНЮ ---
+        
         function scrollToSection(index) {
             if (index < 0 || index >= sections.length || isScrolling) return;
             isScrolling = true;
@@ -45,7 +135,6 @@ $this->render('_head');
             updateActiveLink();
         }
         
-        // Функция для скролла по ID секции
         function scrollToSectionById(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -56,7 +145,6 @@ $this->render('_head');
             }
         }
         
-        // Обработчики для всех кнопок "вниз"
         arrowBtns.forEach((btn) => {
             btn.addEventListener('click', () => {
                 const currentSection = btn.closest('.page-section');
@@ -64,15 +152,6 @@ $this->render('_head');
                 if (currentIdx !== -1 && currentIdx < sections.length - 1) {
                     scrollToSection(currentIdx + 1);
                 }
-            });
-        });
-        
-        // Обработчики для ссылок в меню
-        document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                scrollToSectionById(targetId);
             });
         });
         
@@ -110,7 +189,6 @@ $this->render('_head');
         sections.forEach(section => observer.observe(section));
         container.addEventListener('wheel', handleWheel, { passive: false });
         
-        // Для мобильных устройств - тач-события
         let touchStartY = 0;
         container.addEventListener('touchstart', (e) => {
             touchStartY = e.touches[0].clientY;
@@ -128,7 +206,6 @@ $this->render('_head');
             }
         }, { passive: true });
         
-        // Обновляем активную ссылку в меню
         function updateActiveLink() {
             document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
                 link.classList.remove('active');
@@ -142,8 +219,17 @@ $this->render('_head');
             }
         }
         
-        // Инициализация активной ссылки
         setTimeout(updateActiveLink, 100);
+        
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                if (window.innerWidth > 900) {
+                    closeMenu();
+                }
+            }, 250);
+        });
     })();
 </script>
 

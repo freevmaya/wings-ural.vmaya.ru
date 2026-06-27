@@ -10,9 +10,15 @@ use yii\helpers\Url;
 ?>
 <div class="main-menu">
     <div class="logo">
-        <a href="<?= Url::home() ?>"><img src="images/logo.png"></a>
+        <a href="<?= Url::home() ?>"><img src="images/logo.png" alt="Logo"></a>
     </div>
-    <ul class="nav-links">
+    
+    <!-- Кнопка бургер-меню (только на мобильных) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <ul class="nav-links" id="navLinks">
         <!-- Пункт 1: Полеты -->
         <li class="dropdown">
             <a href="#section2">Полеты <i class="fas fa-chevron-down"></i></a>
@@ -27,6 +33,7 @@ use yii\helpers\Url;
         </li>
         <li><a href="#section5">О нас</a></li>
     </ul>
+    
     <div class="social-icons">
         <a href="https://vk.com/parachelovek" target="_blank"><i class="fab fa-vk"></i></a>
         <a href="https://t.me/FreeVmaya" target="_blank"><i class="fab fa-telegram"></i></a>
