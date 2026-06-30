@@ -19,8 +19,14 @@ $cssVersion = 3;
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/site.css?v=<?= $cssVersion ?>">
+    
+    <!-- Мета-теги для мобильных устройств -->
+    <meta name="theme-color" content="#0f1a1f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 </head>
-<body class="fullscreen-mode">
+<body class="fullscreen-mode" style="height: 100dvh; height: -webkit-fill-available;">
 <?php $this->beginBody() ?>
 
 <?= $this->render('_fullscreen_header') ?>
@@ -170,7 +176,7 @@ $cssVersion = 3;
         // --- ОБРАБОТЧИК КОЛЕСИКА МЫШИ ---
         let wheelTimeout = null;
         let wheelDeltaAccumulator = 0;
-        const wheelThreshold = 50; // Чувствительность колесика
+        const wheelThreshold = 50;
         
         function handleWheel(e) {
             if (isScrolling) {
@@ -178,40 +184,34 @@ $cssVersion = 3;
                 return;
             }
             
-            // Аккумулируем дельту колесика
             wheelDeltaAccumulator += e.deltaY;
             
-            // Если накопилось достаточно, срабатываем
             if (Math.abs(wheelDeltaAccumulator) > wheelThreshold) {
                 e.preventDefault();
                 
                 if (wheelDeltaAccumulator > 0) {
-                    // Скролл вниз
                     if (currentIndex < sections.length - 1) {
                         scrollToSection(currentIndex + 1);
                     }
                 } else {
-                    // Скролл вверх
                     if (currentIndex > 0) {
                         scrollToSection(currentIndex - 1);
                     }
                 }
                 
-                // Сбрасываем аккумулятор
                 wheelDeltaAccumulator = 0;
             }
             
-            // Отключаем стандартный скролл
             if (e.cancelable) {
                 e.preventDefault();
             }
         }
         
-        // --- ОБРАБОТЧИК КАСАНИЙ (ТОЧНОЕ УПРАВЛЕНИЕ) ---
+        // --- ОБРАБОТЧИК КАСАНИЙ ---
         let touchStartY = 0;
         let touchStartTime = 0;
         let touchMoveCount = 0;
-        const touchThreshold = 30; // Минимальное расстояние для свайпа
+        const touchThreshold = 30;
         
         function handleTouchStart(e) {
             touchStartY = e.touches[0].clientY;
@@ -220,16 +220,13 @@ $cssVersion = 3;
         }
         
         function handleTouchMove(e) {
-            // Считаем количество событий touchmove для определения быстрого свайпа
             touchMoveCount++;
             
-            // Если скроллинг заблокирован, предотвращаем скролл
             if (isScrolling) {
                 e.preventDefault();
                 return;
             }
             
-            // Разрешаем небольшой скролл внутри секции, если она прокручивается
             const currentSection = sections[currentIndex];
             if (currentSection) {
                 const scrollTop = currentSection.scrollTop;
@@ -238,18 +235,15 @@ $cssVersion = 3;
                 const isAtTop = scrollTop <= 0;
                 const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
                 
-                // Если мы в середине секции, разрешаем прокрутку внутри
                 if (!isAtTop && !isAtBottom) {
-                    return; // Разрешаем стандартную прокрутку внутри секции
+                    return;
                 }
                 
-                // Если в начале и пытаемся скроллить вверх - блокируем
                 if (isAtTop && e.touches[0].clientY > touchStartY) {
                     e.preventDefault();
                     return;
                 }
                 
-                // Если в конце и пытаемся скроллить вниз - блокируем
                 if (isAtBottom && e.touches[0].clientY < touchStartY) {
                     e.preventDefault();
                     return;
@@ -264,18 +258,15 @@ $cssVersion = 3;
             const diff = touchStartY - touchEndY;
             const timeDiff = Date.now() - touchStartTime;
             
-            // Определяем, был ли это быстрый свайп (меньше 200ms) или медленный
             const isFastSwipe = timeDiff < 200;
             const threshold = isFastSwipe ? 20 : touchThreshold;
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0) {
-                    // Свайп вверх -> следующая секция
                     if (currentIndex < sections.length - 1) {
                         scrollToSection(currentIndex + 1);
                     }
                 } else {
-                    // Свайп вниз -> предыдущая секция
                     if (currentIndex > 0) {
                         scrollToSection(currentIndex - 1);
                     }
@@ -335,6 +326,36 @@ $cssVersion = 3;
             }
         }
         
+        // --- РАЗМЕР СТРАНИЦЫ И СИСТЕМНЫЕ ПАНЕЛИ ---
+        function updateHeight() {
+            const vh = window.innerHeight;
+            const availableHeight = Math.min(vh, window.screen.height);
+            
+            document.querySelectorAll('.page-section, .scroll-container, .fullscreen-mode').forEach(el => {
+                el.style.height = availableHeight + 'px';
+                el.style.minHeight = availableHeight + 'px';
+            });
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(updateHeight, 50);
+        });
+        
+        window.addEventListener('resize', function() {
+            clearTimeout(window._resizeTimer);
+            window._resizeTimer = setTimeout(updateHeight, 100);
+        });
+        
+        window.addEventListener('orientationchange', function() {
+            setTimeout(updateHeight, 300);
+        });
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY === 0) {
+                updateHeight();
+            }
+        }, { passive: true });
+        
         // --- АДАПТАЦИЯ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ---
         let resizeTimeout;
         window.addEventListener('resize', function() {
@@ -343,7 +364,6 @@ $cssVersion = 3;
                 if (window.innerWidth > 900) {
                     closeMenu();
                 }
-                // Обновляем позицию при изменении размера
                 if (!isScrolling) {
                     const currentSection = sections[currentIndex];
                     if (currentSection) {
@@ -355,11 +375,11 @@ $cssVersion = 3;
         
         // --- ИНИЦИАЛИЗАЦИЯ ---
         setTimeout(() => {
-            // Прокручиваем к первой секции
             if (sections.length > 0) {
                 sections[0].scrollIntoView({ block: 'start' });
             }
             updateActiveLink();
+            updateHeight();
         }, 100);
         
     })();

@@ -934,3 +934,98 @@ body.fullscreen-mode {
         transform: rotate(180deg);
     }
 }
+
+/* ============================================================ */
+/* УПРАВЛЕНИЕ СИСТЕМНЫМ ИНТЕРФЕЙСОМ МОБИЛЬНЫХ УСТРОЙСТВ */
+/* ============================================================ */
+
+/* Темный фон для системных панелей (Android, iOS) */
+html {
+    background-color: #0f1a1f;
+}
+
+/* Управление цветом системных элементов браузера и ОС */
+:root {
+    color-scheme: dark;
+}
+
+/* Для мобильных устройств - правильная высота с учетом системных панелей */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body.fullscreen-mode {
+    height: 100%;
+    height: 100dvh; /* Dynamic Viewport Height - учитывает панели браузера */
+    height: -webkit-fill-available; /* Для старых версий Safari */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Контейнер скролла - использует доступную высоту */
+.scroll-container {
+    height: 100%;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+/* Секции используют доступную высоту */
+.page-section {
+    height: 100%;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    min-height: 100%;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    width: 100%;
+    position: relative;
+    overflow-y: auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* Для старых браузеров - запасной вариант */
+@supports not (height: 100dvh) {
+    .page-section,
+    .scroll-container,
+    body.fullscreen-mode {
+        height: 100vh;
+    }
+}
+
+/* Убираем белые полосы при скролле */
+body.fullscreen-mode::-webkit-scrollbar,
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+body.fullscreen-mode,
+.scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Исправление для iOS Safari - фиксация положения */
+@supports (-webkit-touch-callout: none) {
+    body.fullscreen-mode {
+        height: -webkit-fill-available;
+        position: fixed;
+    }
+    .scroll-container {
+        height: -webkit-fill-available;
+    }
+    .page-section {
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+}
