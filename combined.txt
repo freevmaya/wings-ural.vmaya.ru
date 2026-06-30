@@ -21,6 +21,11 @@ main > .container {
 
 a {
     color: yellow;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* add sorting icons to gridview sort links */
@@ -395,7 +400,6 @@ body.fullscreen-mode {
 
 .nav-links a {
     color: white;
-    text-decoration: none;
     font-size: 1rem;
     transition: 0.3s;
     padding: 8px 0;
@@ -452,7 +456,6 @@ body.fullscreen-mode {
     color: white;
     font-size: 1.4rem;
     transition: 0.2s;
-    text-decoration: none;
 }
 
 .social-icons a:hover {
@@ -498,6 +501,7 @@ body.fullscreen-mode {
     padding: 2rem;
     z-index: 2;
     animation: fadeInUp 1s ease;
+    margin-top: 80px;
 }
 
 .hero-text h1 {
@@ -574,14 +578,6 @@ body.fullscreen-mode {
     line-height: 1.5;
 }
 
-.content-block a {
-    text-decoration: none;
-}
-
-.content-block a:hover {
-    text-decoration: underline;
-}
-
 /* Анимации */
 @keyframes fadeInUp {
     from {
@@ -624,19 +620,19 @@ body.fullscreen-mode {
         justify-content: center;
     }
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .hero-text h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     .hero-text p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .content-block h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     .content-block p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -794,6 +790,157 @@ body.fullscreen-mode {
     .nav-links a {
         font-size: 1rem;
         padding: 10px 0;
+    }
+}
+
+/* Стили для Nav::widget в fullscreen режиме */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 1rem;
+    transition: 0.3s;
+    padding: 8px 0;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.nav-links a:hover {
+    color: #ffd966;
+}
+
+.nav-links a.active {
+    color: #ffd966;
+    font-weight: bold;
+}
+
+/* Выпадающее меню для Nav::widget */
+.nav-links .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    min-width: 180px;
+    top: 35px;
+    left: 0;
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    z-index: 1100;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-links .dropdown .dropdown-menu li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-links .dropdown .dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.nav-links .dropdown .dropdown-menu a {
+    color: #f0f0f0;
+    padding: 8px 20px;
+    display: block;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.nav-links .dropdown .dropdown-menu a:hover {
+    background: rgba(255, 217, 102, 0.2);
+    color: #ffd966;
+}
+
+.nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Мобильная адаптация для Nav::widget */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(12px);
+        padding: 1rem 2rem;
+        gap: 0.5rem;
+        width: 100%;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        margin: 0;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 999;
+    }
+    
+    .nav-links.open {
+        display: flex !important;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    /* Выпадающие подменю на мобильных */
+    .nav-links .dropdown .dropdown-menu {
+        position: static;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: none;
+        border-radius: 8px;
+        margin: 0 0 0 1rem;
+        padding: 0.3rem 0;
+        min-width: auto;
+        width: calc(100% - 1rem);
+        box-shadow: none;
+        display: none;
+    }
+    
+    .nav-links .dropdown.open .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-links .dropdown .dropdown-menu a {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        text-align: center;
+    }
+    
+    .nav-links .dropdown .fa-chevron-down {
+        transition: transform 0.3s ease;
+        display: inline-block;
+    }
+    
+    .nav-links .dropdown.open .fa-chevron-down {
+        transform: rotate(180deg);
     }
 }
 
@@ -1670,7 +1817,7 @@ $config = [
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => false,
-            'showScriptName' => true,
+            'showScriptName' => true
         ],
     ],
     'params' => $params,
@@ -1691,6 +1838,35 @@ if (YII_ENV_DEV) {
 }
 
 return $config;
+
+
+# ============================================================
+# FILE: .\controllers\ArticleController.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+
+declare(strict_types=1);
+
+namespace app\controllers;
+
+use yii\web\Controller;
+
+class ArticleController extends Controller
+{
+    /**
+     * Страница "Что такое параплан?"
+     * @return string
+     */
+    public function actionWhatIsParagrider(): string
+    {
+        $this->layout = 'main-fullscreen'; // или 'main' для обычного режима
+        $this->view->title = 'Что такое параплан? | Параплан Челябинск';
+        
+        return $this->render('what_is_paragrider');
+    }
+}
 
 
 # ============================================================
@@ -3465,6 +3641,196 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 # ============================================================
+# FILE: .\views\article\what_is_paragrider.php
+# TYPE: .PHP
+# ============================================================
+
+<?php
+/* @var $this yii\web\View */
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+$this->title = 'Что такое параплан? | Параплан Челябинск';
+$this->params['meta_description'] = 'Что такое параплан и чем он отличается от парашюта? Устройство, принцип полета, безопасность. Обучение полетам на параплане в Челябинске.';
+$this->params['meta_keywords'] = 'параплан, что такое параплан, отличие параплана от парашюта, свободный полет, обучение параплану, полеты на параплане';
+
+$this->context->layout = 'main-fullscreen';
+?>
+
+<!-- СЕКЦИЯ 1: Введение -->
+<section class="page-section video-section" id="section1">
+    <video autoplay muted loop playsinline>
+        <source src="/video/section-2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h1>Что такое параплан?</h1>
+        <p>Параплан — это сверхлегкий летательный аппарат, который позволяет человеку парить в небе как птица, преодолевая десятки и сотни километров.</p>
+    </div>
+
+    <div class="scroll-down" id="arrowDown1">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 2: Отличие от парашюта -->
+<section class="page-section content-block" id="section2">
+    <h2>Параплан и парашют — в чем разница?</h2>
+    <p style="max-width: 700px; margin: 0 auto 1.5rem auto;">
+        Часто можно услышать, как параплан называют «парашютом». С точки зрения пилота, это примерно то же самое, что назвать гоночный болид «телегой». Да, внешне они похожи: оба — мягкие крылья из ткани и строп. Однако цель у них принципиально разная.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 700px; margin: 0 auto; width: 100%;">
+        <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; border-left: 4px solid #e74c3c;">
+            <h3 style="font-size: 1.2rem;">Парашют</h3>
+            <p style="font-size: 0.95rem; margin: 0;">Средство спасения. Задача — безопасно опустить человека или груз с высоты вниз. Вертикальный спуск.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; border-left: 4px solid #2ecc71;">
+            <h3 style="font-size: 1.2rem;">Параплан</h3>
+            <p style="font-size: 0.95rem; margin: 0;">Полноценный сверхлегкий летательный аппарат. Создан для горизонтальных полетов, парения и преодоления больших расстояний.</p>
+        </div>
+    </div>
+    <p style="max-width: 700px; margin: 1.5rem auto 0 auto; font-size: 0.95rem;">
+        <strong>Ключевое отличие:</strong> у параплана более длинные стропы, а его крыло имеет особый профиль, как у самолета или планера. Это позволяет не просто падать, а планировать — пролетая до <strong>10 километров</strong> с каждого километра высоты. Вес комплекта — всего <strong>6–12 кг</strong>, всё помещается в небольшой рюкзак.
+    </p>
+
+    <div class="scroll-down" id="arrowDown2">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 3: Конструкция -->
+<section class="page-section content-block" id="section3">
+
+    <div class="hero-text">
+        <h2>Как это работает?</h2>
+        <div style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1rem;">
+            <p style="display: flex; gap: 12px; align-items: flex-start; margin: 8px 0;">
+                <span style="font-size: 1.2rem; font-weight: bold; min-width: 24px;">1.</span>
+                <span><strong>Воздухозаборники</strong> — отверстия спереди крыла. Набегающий поток воздуха надувает параплан, придавая ему жесткость и форму.</span>
+            </p>
+            <p style="display: flex; gap: 12px; align-items: flex-start; margin: 8px 0;">
+                <span style="font-size: 1.2rem; font-weight: bold; min-width: 24px;">2.</span>
+                <span><strong>Подъемная сила</strong> — поток воздуха обтекает профиль крыла и создает силу, удерживающую пилота в воздухе.</span>
+            </p>
+            <p style="display: flex; gap: 12px; align-items: flex-start; margin: 8px 0;">
+                <span style="font-size: 1.2rem; font-weight: bold; min-width: 24px;">3.</span>
+                <span><strong>Подвесная система</strong> — пилот висит в специальном кресле, соединенном с крылом через стропы.</span>
+            </p>
+            <p style="display: flex; gap: 12px; align-items: flex-start; margin: 8px 0;">
+                <span style="font-size: 1.2rem; font-weight: bold; min-width: 24px;">4.</span>
+                <span><strong>Управление</strong> — двумя ручками (клевантами): потянул за правую — поворот направо, за левую — налево.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="scroll-down" id="arrowDown3">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 4: Свободный полет -->
+<section class="page-section content-block" id="section4">
+    <h2>Свободный полет: искусство использовать невидимое</h2>
+    <p style="max-width: 700px; margin: 0 auto 1.5rem auto;">
+        «Свободный полет» — это полет без мотора. Как же набирать высоту и лететь часами? Ответ — в умении использовать энергию атмосферы.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 0 auto; width: 100%;">
+        <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px;">
+            <h3 style="font-size: 1.2rem;">Динамический восходящий поток</h3>
+            <p style="font-size: 0.95rem;">Ветер дует на склон горы, поднимается вверх. Пилот ловит этот поток и парит над склоном, почти без потери высоты. Идеально для новичков.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px;">
+            <h3 style="font-size: 1.2rem;">Термический восходящий поток</h3>
+            <p style="font-size: 0.95rem;">Солнце нагревает землю, теплый воздух поднимается вверх как гигантские пузыри. Опытные пилоты находят термики под кучевыми облаками и набирают высоту до <strong>4000 метров</strong>.</p>
+        </div>
+    </div>
+
+    <div class="scroll-down" id="arrowDown4">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 5: Маршрутные полеты -->
+<section class="page-section content-block" id="section5">
+
+    <div class="hero-text">
+        <h2>Маршрутный полет: охота за облаками</h2>
+        <p style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+            Это настоящий спорт высшего пилотажа. Пилот набирает высоту в термике, перелетает к следующему, снова набирает — и так километр за километром.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 600px; margin: 0 auto; width: 100%;">
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                <p style="font-size: 0.9rem; margin: 0;">Официальные соревнования</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                <p style="font-size: 0.9rem; margin: 0;">Дистанции до <strong>500+ км</strong></p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                <p style="font-size: 0.9rem; margin: 0;">Многодневные гонки</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-down" id="arrowDown5">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 6: Безопасность -->
+<section class="page-section content-block" id="section6">
+    <h2>Насколько это безопасно?</h2>
+    <p style="max-width: 700px; margin: 0 auto 1rem auto;">
+        Основной риск — <strong>человеческий фактор</strong>: ошибки пилотирования и неверные решения. Техника ломается крайне редко.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 700px; margin: 0 auto; width: 100%;">
+        <div style="background: rgba(255,255,255,0.08); padding: 15px; border-radius: 10px; border-left: 4px solid #3498db;">
+            <p style="font-size: 0.95rem; margin: 0;"><strong>Обучение</strong><br>Только с сертифицированным инструктором. Вас научат управлять, понимать погоду и принимать решения.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 15px; border-radius: 10px; border-left: 4px solid #2ecc71;">
+            <p style="font-size: 0.95rem; margin: 0;"><strong>Снаряжение</strong><br>Для начинающих — учебные парапланы класса EN-A, которые сами выходят из сложных режимов.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 15px; border-radius: 10px; border-left: 4px solid #f39c12;">
+            <p style="font-size: 0.95rem; margin: 0;"><strong>Погода</strong><br>Главное правило: если есть сомнения — полет откладывается. Уважение к небу — основа безопасности.</p>
+        </div>
+    </div>
+    <p style="max-width: 700px; margin: 1.5rem auto 0 auto; font-size: 1rem;">
+        <strong>Главный ключ к безопасным полетам — грамотный подход и уважение к небу.</strong>
+    </p>
+
+    <div class="scroll-down" id="arrowDown6">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- СЕКЦИЯ 7: Заключение -->
+<section class="page-section video-section" id="section7">
+    <video autoplay muted loop playsinline>
+        <source src="/video/section-2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+        <h2>Готов к полету?</h2>
+        <p style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+            Парапланеризм — это удивительная возможность прикоснуться к небу, почувствовать свободу и увидеть мир с новой перспективы. Ты — не просто пассажир, а настоящий хозяин небесных дорог.
+        </p>
+        <p style="margin-top: 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <?= Html::a('На главную', ['site/index']) ?>
+            <a href="tel:+79227540997">
+                Записаться на обучение
+            </a>
+        </p>
+    </div>
+
+    <div class="scroll-down" id="arrowDown7">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+
+# ============================================================
 # FILE: .\views\layouts\_footer.php
 # TYPE: .PHP
 # ============================================================
@@ -3524,6 +3890,7 @@ declare(strict_types=1);
 
 /** @var yii\web\View $this */
 
+use yii\bootstrap5\Nav;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -3538,21 +3905,42 @@ use yii\helpers\Url;
         <i class="fas fa-bars"></i>
     </button>
     
-    <ul class="nav-links" id="navLinks">
-        <!-- Пункт 1: Полеты -->
-        <li class="dropdown">
-            <a href="#section2">Полеты <i class="fas fa-chevron-down"></i></a>
-        </li>
-        <!-- Пункт 2: Обучение -->
-        <li class="dropdown">
-            <a href="#section3">Обучение <i class="fas fa-chevron-down"></i></a>
-        </li>
-        <!-- Пункт 3: Тандемный полет -->
-        <li class="dropdown">
-            <a href="#section4">Тандемный полет <i class="fas fa-chevron-down"></i></a>
-        </li>
-        <li><a href="#section5">О нас</a></li>
-    </ul>
+    <?php
+    // Генерация меню через Nav::widget
+    echo Nav::widget([
+        'options' => [
+            'class' => 'nav-links',
+            'id' => 'navLinks',
+        ],
+        'encodeLabels' => false,
+        'items' => [
+            [
+                'label' => 'Полеты',
+                'url' => '#section2',
+                'items' => [
+                    ['label' => 'История', 'url' => Url::to(['article/history'])],
+                    ['label' => 'Планы', 'url' => 'article/history'],
+                ],
+                'linkOptions' => ['data-target' => 'section2'],
+            ],
+            [
+                'label' => 'Обучение',
+                'url' => '#section3',
+                'linkOptions' => ['data-target' => 'section3'],
+            ],
+            [
+                'label' => 'Тандемный полет',
+                'url' => '#section4',
+                'linkOptions' => ['data-target' => 'section4'],
+            ],
+            [
+                'label' => 'О нас',
+                'url' => '#section5',
+                'linkOptions' => ['data-target' => 'section5'],
+            ],
+        ],
+    ]);
+    ?>
     
     <div class="social-icons">
         <a href="https://vk.com/parachelovek" target="_blank"><i class="fab fa-vk"></i></a>
@@ -3693,7 +4081,6 @@ $items = [
 # ============================================================
 
 <?php
-
 declare(strict_types=1);
 
 /** @var yii\web\View $this */
@@ -3703,6 +4090,8 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 
 $this->render('_head');
+
+$cssVersion = 2;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -3711,6 +4100,7 @@ $this->render('_head');
     <?php $this->head() ?>
     <title><?= Html::encode($this->title) ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/site.css?v=<?= $cssVersion ?>">
 </head>
 <body class="fullscreen-mode">
 <?php $this->beginBody() ?>
@@ -3735,13 +4125,25 @@ $this->render('_head');
         const navLinks = document.getElementById('navLinks');
         const dropdowns = document.querySelectorAll('.dropdown');
         
+        // Функция закрытия меню
+        function closeMenu() {
+            if (navLinks) navLinks.classList.remove('open');
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            }
+            dropdowns.forEach(d => d.classList.remove('open'));
+        }
+        
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', function(e) {
                 e.stopPropagation();
                 navLinks.classList.toggle('open');
                 this.classList.toggle('active');
                 
-                // Меняем иконку
                 const icon = this.querySelector('i');
                 if (icon) {
                     if (navLinks.classList.contains('open')) {
@@ -3752,47 +4154,39 @@ $this->render('_head');
                 }
             });
             
-            // Закрываем меню при клике на ссылку
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('open');
-                    menuToggle.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.className = 'fas fa-bars';
-                    }
-                    // Закрываем все открытые dropdown
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                });
-            });
-            
             // Клик вне меню закрывает его
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.main-menu')) {
-                    navLinks.classList.remove('open');
-                    menuToggle.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.className = 'fas fa-bars';
-                    }
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    closeMenu();
                 }
             });
         }
         
         // --- ДЛЯ МОБИЛЬНЫХ: открытие/закрытие dropdown ---
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('a');
-            if (link && window.innerWidth <= 900) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const isOpen = dropdown.classList.contains('open');
-                    // Закрываем все другие dropdown
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                    if (!isOpen) {
-                        dropdown.classList.add('open');
+        // Используем делегирование событий для Nav::widget
+        document.querySelectorAll('.nav-links .dropdown > a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    // Проверяем, является ли ссылка якорем секции
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#section') && href !== '#') {
+                        // Это ссылка на секцию - закрываем меню и скроллим
+                        e.preventDefault();
+                        closeMenu();
+                        const targetId = href.substring(1);
+                        scrollToSectionById(targetId);
+                        return;
                     }
-                    // Если меню закрыто - открываем его
+                    // Это ссылка с выпадающим меню
+                    e.preventDefault();
+                    const parent = this.closest('.dropdown');
+                    if (parent) {
+                        const isOpen = parent.classList.contains('open');
+                        dropdowns.forEach(d => d.classList.remove('open'));
+                        if (!isOpen) {
+                            parent.classList.add('open');
+                        }
+                    }
                     if (!navLinks.classList.contains('open')) {
                         navLinks.classList.add('open');
                         menuToggle.classList.add('active');
@@ -3801,8 +4195,30 @@ $this->render('_head');
                             icon.className = 'fas fa-times';
                         }
                     }
-                });
-            }
+                }
+            });
+        });
+        
+        // --- ОБРАБОТЧИКИ ДЛЯ ВСЕХ ССЫЛОК В МЕНЮ ---
+        document.querySelectorAll('.nav-links a[href^="#section"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#section')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    closeMenu();
+                    scrollToSectionById(targetId);
+                }
+            });
+        });
+        
+        // --- ОБРАБОТЧИК ДЛЯ ПОДМЕНЮ НА ДЕСКТОПЕ (чтобы не уходило на #) ---
+        document.querySelectorAll('.nav-links .dropdown > a[href="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth > 900) {
+                    e.preventDefault();
+                }
+            });
         });
         // --- КОНЕЦ БУРГЕР-МЕНЮ ---
         
@@ -3832,14 +4248,6 @@ $this->render('_head');
                 if (currentIdx !== -1 && currentIdx < sections.length - 1) {
                     scrollToSection(currentIdx + 1);
                 }
-            });
-        });
-        
-        document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                scrollToSectionById(targetId);
             });
         });
         
@@ -3895,36 +4303,30 @@ $this->render('_head');
         }, { passive: true });
         
         function updateActiveLink() {
-            document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
+            // Убираем активный класс у всех ссылок в меню
+            document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
             });
+            // Добавляем активный класс для текущей секции
             if (sections[currentIndex]) {
                 const activeId = sections[currentIndex].id;
-                const activeLink = document.querySelector(`.main-menu a[href="#${activeId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === '#' + activeId) {
+                        link.classList.add('active');
+                    }
+                });
             }
         }
         
         setTimeout(updateActiveLink, 100);
         
-        // Обновляем обработчики dropdown при изменении размера окна
         let resizeTimeout;
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(function() {
-                // Если ширина больше 900px, закрываем мобильное меню
                 if (window.innerWidth > 900) {
-                    if (navLinks) navLinks.classList.remove('open');
-                    if (menuToggle) {
-                        menuToggle.classList.remove('active');
-                        const icon = menuToggle.querySelector('i');
-                        if (icon) {
-                            icon.className = 'fas fa-bars';
-                        }
-                    }
-                    dropdowns.forEach(d => d.classList.remove('open'));
+                    closeMenu();
                 }
             }, 250);
         });
@@ -4244,6 +4646,7 @@ $statusCode = $exception instanceof HttpException ? $exception->statusCode : 500
 
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Url;
 
 $this->title = 'Параплан Челябинск | Полеты и обучение';
 
@@ -4261,6 +4664,7 @@ $this->context->layout = 'main-fullscreen';
     <div class="hero-text">
         <h1>Небо ближе, чем ты думаешь</h1>
         <p>Полеты на параплане в Челябинске и выездные школы. Ощути свободу полета!</p>
+        <a href="<?= Url::to(['article/what-is-paragrider']) ?>">Что такое параплан?</a>
     </div>
 
     <div class="scroll-down" id="arrowDown">
@@ -4330,7 +4734,7 @@ $this->context->layout = 'main-fullscreen';
     <div class="hero-text">
         <h2>✨ Тандем – полет в подарок</h2>
         <p>Полет с сертифицированным инструктором. Без подготовки, максимальная безопасность. Длительность – 15-25 минут, высота до 800 метров.</p>
-        <p>Стоимость: от 2500 ₽ (+видеосъемка). Заказать сейчас 
+        <p>Заказать сейчас 
         <p style="display: flex; gap: 20px; justify-content: center; align-items: center; font-size: 2rem; margin-top: 10px;">
             <a href="https://vk.com/fwadim" target="_blank">
                 <i class="fab fa-vk"></i>
@@ -4352,7 +4756,7 @@ $this->context->layout = 'main-fullscreen';
 <!-- СЕКЦИЯ 5: О нас -->
 <section class="page-section content-block" id="section5">
     <h2>🏆 О нас</h2>
-    <p>Команда инструкторов с опытом полетов более 20 лет. Члены Федерации парапланерного спорта. Более 2000 успешных тандемов и 300 выпущенных пилотов.</p>
+    <p>Команда инструкторов с опытом полетов более 10 лет. Члены Федерации парапланерного спорта. Множество успешных тандемов и выпущенных пилотов.</p>
     <p>Приходи знакомиться - проведём экскурсию и бесплатную лекцию о безопасности.</p>
 </section>
 

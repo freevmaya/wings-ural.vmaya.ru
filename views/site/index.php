@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Url;
 
 $this->title = 'Параплан Челябинск | Полеты и обучение';
 
@@ -17,6 +18,7 @@ $this->context->layout = 'main-fullscreen';
     <div class="hero-text">
         <h1>Небо ближе, чем ты думаешь</h1>
         <p>Полеты на параплане в Челябинске и выездные школы. Ощути свободу полета!</p>
+        <a href="<?= Url::to(['article/what-is-paragrider']) ?>">Что такое параплан?</a>
     </div>
 
     <div class="scroll-down" id="arrowDown">

@@ -81,49 +81,61 @@ $cssVersion = 2;
         }
         
         // --- ДЛЯ МОБИЛЬНЫХ: открытие/закрытие dropdown ---
-        dropdowns.forEach(dropdown => {
-            const link = dropdown.querySelector('a');
-            if (link) {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 900) {
-                        // Проверяем, является ли ссылка якорем секции
-                        const href = this.getAttribute('href');
-                        if (href && href.startsWith('#section')) {
-                            // Это ссылка на секцию - закрываем меню и скроллим
-                            e.preventDefault();
-                            closeMenu();
-                            const targetId = href.substring(1);
-                            scrollToSectionById(targetId);
-                            return;
-                        }
-                        // Это ссылка с выпадающим меню
+        // Используем делегирование событий для Nav::widget
+        document.querySelectorAll('.nav-links .dropdown > a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    // Проверяем, является ли ссылка якорем секции
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#section') && href !== '#') {
+                        // Это ссылка на секцию - закрываем меню и скроллим
                         e.preventDefault();
-                        const isOpen = dropdown.classList.contains('open');
+                        closeMenu();
+                        const targetId = href.substring(1);
+                        scrollToSectionById(targetId);
+                        return;
+                    }
+                    // Это ссылка с выпадающим меню
+                    e.preventDefault();
+                    const parent = this.closest('.dropdown');
+                    if (parent) {
+                        const isOpen = parent.classList.contains('open');
                         dropdowns.forEach(d => d.classList.remove('open'));
                         if (!isOpen) {
-                            dropdown.classList.add('open');
-                        }
-                        if (!navLinks.classList.contains('open')) {
-                            navLinks.classList.add('open');
-                            menuToggle.classList.add('active');
-                            const icon = menuToggle.querySelector('i');
-                            if (icon) {
-                                icon.className = 'fas fa-times';
-                            }
+                            parent.classList.add('open');
                         }
                     }
-                });
-            }
+                    if (!navLinks.classList.contains('open')) {
+                        navLinks.classList.add('open');
+                        menuToggle.classList.add('active');
+                        const icon = menuToggle.querySelector('i');
+                        if (icon) {
+                            icon.className = 'fas fa-times';
+                        }
+                    }
+                }
+            });
         });
         
-        // --- ОБРАБОТЧИКИ ДЛЯ ССЫЛОК В МЕНЮ (включая десктоп) ---
-        document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
+        // --- ОБРАБОТЧИКИ ДЛЯ ВСЕХ ССЫЛОК В МЕНЮ ---
+        document.querySelectorAll('.nav-links a[href^="#section"]').forEach(function(link) {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                // Закрываем меню перед скроллом
-                closeMenu();
-                scrollToSectionById(targetId);
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#section')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    closeMenu();
+                    scrollToSectionById(targetId);
+                }
+            });
+        });
+        
+        // --- ОБРАБОТЧИК ДЛЯ ПОДМЕНЮ НА ДЕСКТОПЕ (чтобы не уходило на #) ---
+        document.querySelectorAll('.nav-links .dropdown > a[href="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth > 900) {
+                    e.preventDefault();
+                }
             });
         });
         // --- КОНЕЦ БУРГЕР-МЕНЮ ---
@@ -209,15 +221,19 @@ $cssVersion = 2;
         }, { passive: true });
         
         function updateActiveLink() {
-            document.querySelectorAll('.main-menu a[href^="#section"]').forEach(link => {
+            // Убираем активный класс у всех ссылок в меню
+            document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
             });
+            // Добавляем активный класс для текущей секции
             if (sections[currentIndex]) {
                 const activeId = sections[currentIndex].id;
-                const activeLink = document.querySelector(`.main-menu a[href="#${activeId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === '#' + activeId) {
+                        link.classList.add('active');
+                    }
+                });
             }
         }
         
