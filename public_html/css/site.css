@@ -281,7 +281,6 @@ a.desc:after {
 
 /* hero banner */
 .hero-banner {
-    /*background: linear-gradient(135deg, #83C933 0%, #3a9cbd 40%, #40B3D8 100%);*/
     position: relative;
 }
 
@@ -302,11 +301,6 @@ a.desc:after {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    /*
-    background:
-        radial-gradient(circle at 15% 85%, rgba(241, 138, 42, .3) 0%, transparent 45%),
-        radial-gradient(circle at 85% 15%, rgba(131, 201, 51, .25) 0%, transparent 40%),
-        radial-gradient(ellipse at 50% 50%, rgba(64, 179, 216, .15) 0%, transparent 60%);*/
     pointer-events: none;
 }
 
@@ -491,8 +485,23 @@ body.fullscreen-mode {
     max-width: 800px;
     padding: 2rem;
     z-index: 2;
-    animation: fadeInUp 1s ease;
     margin-top: 80px;
+}
+
+.hero-text h1 {
+    opacity: 0;
+}
+
+.hero-text h2 {
+    opacity: 0;
+}
+
+.hero-text p {
+    opacity: 0;
+}
+
+.hero-text a {
+    opacity: 0;
 }
 
 .hero-text h1 {
@@ -584,6 +593,23 @@ body.fullscreen-mode {
 @keyframes bounce {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(12px); }
+}
+
+/* ============================================================ */
+/* АНИМАЦИЯ ПРИ ПОЯВЛЕНИИ СЕКЦИЙ */
+/* ============================================================ */
+
+/* Базовое состояние (скрыто) */
+.animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Сама анимация */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
 }
 
 /* Скролл-снап для вертикальной привязки */
@@ -959,8 +985,8 @@ body {
 
 body.fullscreen-mode {
     height: 100%;
-    height: 100dvh; /* Dynamic Viewport Height - учитывает панели браузера */
-    height: -webkit-fill-available; /* Для старых версий Safari */
+    height: 100dvh;
+    height: -webkit-fill-available;
     overflow: hidden;
     position: fixed;
     top: 0;

@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->render('_head');
 
-$cssVersion = 4;
+$cssVersion = 3;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -148,16 +148,13 @@ $cssVersion = 4;
             isScrolling = true;
             currentIndex = index;
             
-            // Используем scrollIntoView с плавной анимацией
             sections[index].scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'start' 
             });
             
-            // Обновляем активную ссылку
             updateActiveLink();
             
-            // Разрешаем следующий скролл через 600ms
             setTimeout(() => {
                 isScrolling = false;
             }, 600);
@@ -174,7 +171,6 @@ $cssVersion = 4;
         }
         
         // --- ОБРАБОТЧИК КОЛЕСИКА МЫШИ ---
-        let wheelTimeout = null;
         let wheelDeltaAccumulator = 0;
         const wheelThreshold = 50;
         
@@ -210,18 +206,14 @@ $cssVersion = 4;
         // --- ОБРАБОТЧИК КАСАНИЙ ---
         let touchStartY = 0;
         let touchStartTime = 0;
-        let touchMoveCount = 0;
         const touchThreshold = 30;
         
         function handleTouchStart(e) {
             touchStartY = e.touches[0].clientY;
             touchStartTime = Date.now();
-            touchMoveCount = 0;
         }
         
         function handleTouchMove(e) {
-            touchMoveCount++;
-            
             if (isScrolling) {
                 e.preventDefault();
                 return;
@@ -355,6 +347,40 @@ $cssVersion = 4;
                 updateHeight();
             }
         }, { passive: true });
+        
+        // --- АНИМАЦИЯ ПРИ ПОЯВЛЕНИИ СЕКЦИЙ ---
+        (function() {
+            const animateSections = document.querySelectorAll('.page-section');
+            
+            if ('IntersectionObserver' in window) {
+                const animObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const section = entry.target;
+                            const animatedElements = section.querySelectorAll('.hero-text, h1, h2, p, a');
+                            
+                            animatedElements.forEach((el, index) => {
+                                el.classList.add('animate-fade-in-up');
+                                el.style.animationDelay = (0.2 + index * 0.08) + 's';
+                            });
+                            
+                            animObserver.unobserve(section);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+                
+                animateSections.forEach(section => {
+                    animObserver.observe(section);
+                });
+            } else {
+                document.querySelectorAll('.hero-text, h1, h2, p, .content-block p').forEach(el => {
+                    el.classList.add('animate-fade-in-up');
+                });
+            }
+        })();
         
         // --- АДАПТАЦИЯ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ---
         let resizeTimeout;
