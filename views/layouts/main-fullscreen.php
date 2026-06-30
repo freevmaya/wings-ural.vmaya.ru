@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->render('_head');
 
-$cssVersion = 2;
+$cssVersion = 3;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
