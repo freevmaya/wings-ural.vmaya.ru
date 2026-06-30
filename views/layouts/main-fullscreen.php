@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->render('_head');
 
-$cssVersion = 4;
+$cssVersion = 5;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ $cssVersion = 4;
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/110267986" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-    
+
 </head>
 <body class="fullscreen-mode" style="height: 100dvh; height: -webkit-fill-available;">
 <?php $this->beginBody() ?>
